@@ -18,9 +18,11 @@ Hej jeg hedder Nadia
 
 ## Load Libraries
 
-Hej jeg hedder nadia igen
-
-og igen
+```{r}
+#| message: false
+library("tidyverse")
+library("here")
+```
 
 ## Load Data
 
