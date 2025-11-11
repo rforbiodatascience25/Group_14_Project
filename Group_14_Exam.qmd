@@ -54,29 +54,9 @@ untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 
 ## Data Description
 
-<<<<<<< HEAD
 
 ## Analysis
 
 Tidy data:
-=======
+
 ## Data Analysis
->>>>>>> 3c48ae26ef5491fbdcec375ab7dc9e4a6ddd750e
-
--   Untidy names separate columns
-<<<<<<< HEAD
-
-Analyze data:
-
-
--   Make graphs over reefh
-
-
--   Make graphs over reefh
->>>>>>> fa6f9cf5f97dc1b7269dfd4a8a6036314c6083d5
-=======
-
->>>>>>> d735a0f701d85ebe816c1b81eee3b389ba5c31b7
-
-
->>>>>>> 234ecb94be146dbdce8439f9de7c88cb3f20b6b5
