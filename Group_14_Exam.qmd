@@ -4,9 +4,9 @@ format: html
 editor: visual
 ---
 
-This exam project has been conducted by Group 14 with the following group members
+This exam project has been conducted by group 14 with the group members
 
--   x
+-   Caroline Sofie Hermannsen - s215016
 
 -   x
 
@@ -40,6 +40,16 @@ library("here")
 
 ## Data Description
 
+<<<<<<< HEAD
 ## Analysis
+=======
+Tidy data:
+
+-   Untidy names separate columns
+
+Analyze data:
+
+-   Make graphs over reef
+>>>>>>> fa6f9cf5f97dc1b7269dfd4a8a6036314c6083d5
 
 ## 
