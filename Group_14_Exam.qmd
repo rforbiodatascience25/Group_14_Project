@@ -54,8 +54,6 @@ untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 
 ## Data Description
 
+
 ## Analysis
 
-Tidy data:
-
-## Data Analysis
