@@ -69,6 +69,6 @@ Tidy data:
 
 Analyze data:
 
--   Make graphs over reefh
+-   Make graphs over reef
 
 ## 
