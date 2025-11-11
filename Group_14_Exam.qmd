@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-*This exam project has been conducted by group 14 that includes the students:*
+*This exam project has been conducted by group 14 which includes the students:*
 
 | Name                      | Student number |
 |---------------------------|----------------|
