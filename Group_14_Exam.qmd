@@ -18,6 +18,16 @@ All group members contributed equally.
 
 ## Background
 
+What we do:
+
+Tidy:
+
+-   Splitting columns
+
+-   Adding variables
+
+-   
+
 -   What is this project about
 
 -   Describe what data files are the original ones and which one we untidied
@@ -49,7 +59,11 @@ Tidy data:
 
 Analyze data:
 
+<<<<<<< HEAD
 -   Make graphs over reef
 >>>>>>> fa6f9cf5f97dc1b7269dfd4a8a6036314c6083d5
+=======
+-   Make graphs over reefh
+>>>>>>> cf691100bb9ae0cb28bbd1f5e13f8139350d6e45
 
 ## 
