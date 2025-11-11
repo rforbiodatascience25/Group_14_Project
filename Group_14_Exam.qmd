@@ -10,7 +10,7 @@ editor: visual
 |---------------------------|----------------|
 | Caroline Sofie Hermannsen | s215016        |
 | Helene Nielsen            | s215037        |
-| Kathrine                  | s              |
+| Kathrine                  | s215052        |
 | Nadia                     | s215055        |
 
 All group members contributed equally.
@@ -53,7 +53,6 @@ untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 ```
 
 ## Data Description
-
 
 ## Analysis
 
