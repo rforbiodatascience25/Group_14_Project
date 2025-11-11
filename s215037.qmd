@@ -24,6 +24,7 @@ Reef Check Data Raw.csv
 #| message: false
 file1 <- read_csv(file = "data/_raw/Reef_Check_with_cortad_variables_with_annual_rate_of_SST_change (1).csv")
 file2 <- read_csv(file = "data/_raw/Reef Check Data Raw (1).csv")
+untidy<- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 ```
 
 ## 
