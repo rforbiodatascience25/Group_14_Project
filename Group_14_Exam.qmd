@@ -11,6 +11,7 @@ editor: visual
 | Caroline Sofie Hermannsen | s215016        |
 | Helene Nielsen            | s215037        |
 | Kathrine                  | s              |
+<<<<<<< HEAD
 
 
 All group members contributed equally to this work.
@@ -21,6 +22,12 @@ All group members contributed equally.
 
 
 
+=======
+| Nadia                     | s215055        |
+
+All group members contributed equally.
+
+>>>>>>> 28101e29eec06db740644b18c50e7852ab20539f
 ## Background
 
 What we do: See google docs document: <https://docs.google.com/document/d/1yNVCNuAO6bL3kIM9ScEc9Kdcnw6VaJup2c3B_c9R7Nk/edit?usp=sharing>
@@ -52,9 +59,29 @@ untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 
 ## Data Description
 
+<<<<<<< HEAD
 
 ## Analysis
 
 Tidy data:
+=======
+## Data Analysis
+>>>>>>> 3c48ae26ef5491fbdcec375ab7dc9e4a6ddd750e
 
 -   Untidy names separate columns
+<<<<<<< HEAD
+
+Analyze data:
+
+
+-   Make graphs over reefh
+
+
+-   Make graphs over reefh
+>>>>>>> fa6f9cf5f97dc1b7269dfd4a8a6036314c6083d5
+=======
+
+>>>>>>> d735a0f701d85ebe816c1b81eee3b389ba5c31b7
+
+
+>>>>>>> 234ecb94be146dbdce8439f9de7c88cb3f20b6b5
