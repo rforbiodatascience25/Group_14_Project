@@ -4,24 +4,17 @@ format: html
 editor: visual
 ---
 
-*This exam project has been conducted by group 14 that includes the students:*
+*This exam project has been conducted by group 14 which includes the students:*
 
 | Name                      | Student number |
 |---------------------------|----------------|
 | Caroline Sofie Hermannsen | s215016        |
 | Helene Nielsen            | s215037        |
-| Nadia                     | s              |
 | Kathrine                  | s              |
-
--   Caroline Sofie Hermannsen - s215016
-
--   Helene Nielsen - s215037
-
--   x
-
--   x
+| Nadia                     | s              |
 
 All group members contributed equally.
+
 
 ## Background
 
@@ -62,12 +55,23 @@ untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 
 ## Data Description
 
+
+## Analysis
+
 Tidy data:
 
 -   Untidy names separate columns
 
 Analyze data:
 
+
 -   Make graphs over reefh
+
+
+-   Make graphs over reefh
+>>>>>>> fa6f9cf5f97dc1b7269dfd4a8a6036314c6083d5
+=======
+
+>>>>>>> d735a0f701d85ebe816c1b81eee3b389ba5c31b7
 
 ## 
