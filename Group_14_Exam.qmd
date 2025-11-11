@@ -18,6 +18,16 @@ All group members contributed equally.
 
 ## Background
 
+What we do:
+
+Tidy:
+
+-   Splitting columns
+
+-   Adding variables
+
+-   
+
 -   What is this project about
 
 -   Describe what data files are the original ones and which one we untidied
