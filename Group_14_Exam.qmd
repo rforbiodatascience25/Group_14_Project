@@ -10,8 +10,8 @@ editor: visual
 |---------------------------|----------------|
 | Caroline Sofie Hermannsen | s215016        |
 | Helene Nielsen            | s215037        |
-| Nadia                     | s              |
 | Kathrine                  | s              |
+| Nadia                     | s              |
 
 -   Caroline Sofie Hermannsen - s215016
 
