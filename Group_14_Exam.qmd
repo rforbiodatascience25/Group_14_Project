@@ -13,7 +13,7 @@ editor: visual
 | Kathrine                  | s215052        |
 | Nadia                     | s215055        |
 
-All group members contributed equally.
+*All group members contributed equally.*
 
 ## Background
 
