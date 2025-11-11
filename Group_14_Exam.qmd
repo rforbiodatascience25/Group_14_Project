@@ -6,7 +6,7 @@ editor: visual
 
 This exam project has been conducted by group 14 with the group members
 
--   x
+-   Caroline Sofie Hermannsen - s215016
 
 -   x
 
@@ -50,6 +50,12 @@ library("here")
 
 ## Data Description
 
-10hi
+Tidy data:
+
+-   Untidy names separate columns
+
+Analyze data:
+
+-   Make graphs over reef
 
 ## 
