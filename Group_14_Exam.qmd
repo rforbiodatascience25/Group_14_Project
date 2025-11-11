@@ -4,18 +4,20 @@ format: html
 editor: visual
 ---
 
-## Introduction
+## Background
 
--   What data is it
+## 
 
--   The files in data (describe which files that are from the article and which one we've untidied and actually use as the raw file.
+## 
 
-## Helene
+## Aim
 
-## Caroline
+## Load Libraries
 
-## Kathrine
+## Load Data
 
-## Nadia
+## Data Description
+
+## 
 
 ## 
