@@ -43,10 +43,15 @@ Hej jeg hedder Nadia
 ```{r}
 #| message: false
 library("tidyverse")
-library("here")
+#library("here")
 ```
 
 ## Load Data
+
+```{r}
+#| message: false
+untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
+```
 
 ## Data Description
 
