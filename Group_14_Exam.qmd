@@ -61,9 +61,3 @@ untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 Tidy data:
 
 -   Untidy names separate columns
-
-Analyze data:
-
-
-
-
