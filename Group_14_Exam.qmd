@@ -4,6 +4,18 @@ format: html
 editor: visual
 ---
 
+This exam project has been conducted by group 14 with the group members
+
+-   x
+
+-   x
+
+-   x
+
+-   x
+
+All group members contributed equally.
+
 ## Background
 
 -   What is this project about
