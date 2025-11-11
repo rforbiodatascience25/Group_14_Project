@@ -13,27 +13,11 @@ editor: visual
 | Nadia                     | s              |
 | Kathrine                  | s              |
 
--   Caroline Sofie Hermannsen - s215016
-
--   Helene Nielsen - s215037
-
--   x
-
--   x
-
-All group members contributed equally.
+All group members contributed equally to this work.
 
 ## Background
 
-What we do:
-
-Tidy:
-
--   Splitting columns
-
--   Adding variables
-
--   
+What we do: See google docs document: <https://docs.google.com/document/d/1yNVCNuAO6bL3kIM9ScEc9Kdcnw6VaJup2c3B_c9R7Nk/edit?usp=sharing>
 
 -   What is this project about
 
