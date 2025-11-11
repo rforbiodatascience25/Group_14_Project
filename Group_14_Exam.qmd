@@ -64,11 +64,6 @@ Tidy data:
 
 Analyze data:
 
-<<<<<<< HEAD
-<<<<<<< HEAD
--   Make graphs over reefh
->>>>>>> fa6f9cf5f97dc1b7269dfd4a8a6036314c6083d5
-=======
 
 
-## 
+
