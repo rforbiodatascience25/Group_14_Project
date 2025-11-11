@@ -4,15 +4,14 @@ format: html
 editor: visual
 ---
 
-This exam project has been conducted by group 14 with the group members:
+*This exam project has been conducted by group 14 that includes the students:*
 
-| Col1 | Col2 |
-|------|------|
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
+| Name                      | Student number |
+|---------------------------|----------------|
+| Caroline Sofie Hermannsen | s215016        |
+| Helene Nielsen            | s215037        |
+| Nadia                     | s              |
+| Kathrine                  | s              |
 
 -   Caroline Sofie Hermannsen - s215016
 
