@@ -10,24 +10,10 @@ editor: visual
 |---------------------------|----------------|
 | Caroline Sofie Hermannsen | s215016        |
 | Helene Nielsen            | s215037        |
-| Kathrine                  | s              |
-
-
-All group members contributed equally to this work.
-
-| Nadia                     | s              |
-
-All group members contributed equally.
-
-
-
-
 | Kathrine                  | s215052        |
-
 | Nadia                     | s215055        |
 
 All group members contributed equally.
-
 
 ## Background
 
