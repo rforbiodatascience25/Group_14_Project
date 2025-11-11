@@ -31,7 +31,7 @@ Tidy:
 
 -   Describe what data files are the original ones and which one we untidied
 
--   Another point
+-   Another pointt
 
 ## Aim
 
