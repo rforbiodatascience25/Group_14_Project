@@ -4,23 +4,26 @@ format: html
 editor: visual
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Loading the raw data from the article
 
 ```{r}
-1 + 1
+#| message: false
+library("tidyverse")
+library("here")
 ```
 
-You can add options to executable code like this
+<https://www.nature.com/articles/s41467-019-09238-2?fbclid=IwY2xjawN_yZJleHRuA2FlbQIxMABicmlkETFzTHp1YXE3Y2RndnRia2dJc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHj9VmFya8pjkWG9U7jpt0hlLrC-tgKBYN8hdV4G2kGPdD0H9DcXHgBsaowik_aem_o13qPfw1ocf8Y00TFudYoA#data-availability>
+
+Files:
+
+Reef_Check_with_cortad_variables_with_annual_rate_of_SST_change.csv
+
+Reef Check Data Raw.csv
 
 ```{r}
-#| echo: false
-2 * 2
+#| message: false
+file1 <- read_csv(file = "data/_raw/Reef_Check_with_cortad_variables_with_annual_rate_of_SST_change (1).csv")
+file2 <- read_csv(file = "data/_raw/Reef Check Data Raw (1).csv")
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## 
