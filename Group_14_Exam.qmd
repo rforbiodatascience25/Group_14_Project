@@ -31,7 +31,7 @@ Tidy:
 
 -   Describe what data files are the original ones and which one we untidied
 
--   Another point
+-   Another pointt
 
 ## Aim
 
@@ -54,6 +54,4 @@ untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 
 ## Data Description
 
-
 ## Analysis
-
