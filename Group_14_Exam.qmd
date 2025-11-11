@@ -6,9 +6,9 @@ editor: visual
 
 ## Background
 
-## 
+-   What is this project about
 
-## 
+-   Describe what data files are the original ones and which one we untidied
 
 ## Aim
 
