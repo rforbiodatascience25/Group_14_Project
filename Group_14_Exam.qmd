@@ -19,17 +19,13 @@ editor: visual
 
 What we do: See google docs document: <https://docs.google.com/document/d/1yNVCNuAO6bL3kIM9ScEc9Kdcnw6VaJup2c3B_c9R7Nk/edit?usp=sharing>
 
--   What is this project about
-
--   Describe what data files are the original ones and which one we untidied
-
--   Another point
-
 Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. addresses how bleaching patterns have varied globally over recent decades.
 
 Using field observations collected at 3,351 reef sites across 81 countries between 1998 and 2017, the authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns.
 
-Here we want to
+Here we want to perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below.
+
+## Data Description
 
 ## Aim
 
@@ -39,8 +35,6 @@ Here we want to
 #| message: false
 library("tidyverse")
 ```
-
-## Data Description
 
 ## Load Data
 
@@ -67,7 +61,7 @@ reef_combined_untidy <- data1 |>
 write_csv(reef_combined_untidy, "data/_raw/reef_data_combined_untidy.csv")
 ```
 
-We now want to tidy the dataset, and turn ReefID_Name into two separate variables. For this we use the seperate function and split them by "\|".
+Now we want to tidy the dataset, and turn ReefID_Name into two separate variables. For this we use the seperate function and split them by "\|".
 
 ```{r}
 reef_combined_tidy <- reef_combined_untidy |>
