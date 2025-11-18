@@ -42,6 +42,10 @@ data1 <- read_csv(file="data/_raw/reef_data_dataset1.csv")
 data2 <- read_csv(file="data/_raw/reef_data_dataset2.csv")
 ```
 
+## Data Description
+
+## Data Wrangling
+
 Now we join the datasets using the untidy combined dataset.
 
 ```{r}
@@ -71,6 +75,4 @@ View(reef_combined_tidy)
 write_csv(reef_combined_tidy, "reef_data_combined_tidy.csv")
 ```
 
-## Data Description
-
-## Analysis
+## Data Analysis
