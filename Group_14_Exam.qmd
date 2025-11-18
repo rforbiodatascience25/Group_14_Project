@@ -34,30 +34,34 @@ What we do: See google docs document: <https://docs.google.com/document/d/1yNVCN
 library("tidyverse")
 ```
 
+## Data Description
+
 ## Load Data
+
+The two different datasets are here loaded into the document and saved as data1 and data2. When viewing the two files, we see that they both contain ReefID_Name as the first column. This column is untidy since we have two different informations in one cell.
 
 ```{r}
 #| message: false
 data1 <- read_csv(file="data/_raw/reef_data_dataset1.csv")
 data2 <- read_csv(file="data/_raw/reef_data_dataset2.csv")
-```
 
-## Data Description
+View(data1)
+View(data2)
+```
 
 ## Data Wrangling
 
-Now we join the datasets using the untidy combined dataset.
+Starting out with the data wrangling we want to first combine the two datasets using the join function and combining them by their common column.
 
 ```{r}
 #| message: false
 reef_combined_untidy <- data1 |>
   left_join(data2, by = "ReefID_Name")
 
-# Save the untidy version
 write_csv(reef_combined_untidy, "data/_raw/reef_data_combined_untidy.csv")
 ```
 
-We tidy the combined column, ReefID_Name into two separate variables.
+We now want to tidy the dataset, and turn ReefID_Name into two separate variables. For this we use the seperate function and split them by "\|".
 
 ```{r}
 reef_combined_tidy <- reef_combined_untidy |>
@@ -68,10 +72,8 @@ reef_combined_tidy <- reef_combined_untidy |>
   ) |>
   relocate(Reef.ID, Reef.Name, .before = 1)
 
-# Look at the final tidy dataset
 View(reef_combined_tidy)
 
-# Save the tidy version
 write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
 ```
 
