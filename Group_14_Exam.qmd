@@ -23,25 +23,23 @@ What we do: See google docs document: <https://docs.google.com/document/d/1yNVCN
 
 -   Describe what data files are the original ones and which one we untidied
 
--   Another pointt
+-   Another point
 
 ## Aim
-
-Hej jeg hedder Nadia
 
 ## Load Libraries
 
 ```{r}
 #| message: false
 library("tidyverse")
-#library("here")
 ```
 
 ## Load Data
 
 ```{r}
 #| message: false
-untidy_data <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
+data1 <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
+data2 <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
 ```
 
 ## Data Description
