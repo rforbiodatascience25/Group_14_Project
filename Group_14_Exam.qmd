@@ -38,8 +38,37 @@ library("tidyverse")
 
 ```{r}
 #| message: false
-data1 <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
-data2 <- read_csv(file="data/_raw/Reef_Check_Data_Untidy.csv")
+data1 <- read_csv(file="data/_raw/reef_data_dataset1.csv")
+data2 <- read_csv(file="data/_raw/reef_data_dataset2.csv")
+```
+
+Now we join the datasets using the untidy combined dataset.
+
+```{r}
+#| message: false
+reef_combined_untidy <- data1 |>
+  left_join(data2, by = "ReefID_Name")
+
+# Save the untidy version
+write_csv(reef_combined_untidy, "reef_data_combined_untidy.csv")
+```
+
+We tidy the combined column, ReefID_Name into two separate variables.
+
+```{r}
+reef_combined_tidy <- reef_combined_untidy |>
+  separate(
+    col  = "ReefID_Name",
+    into = c("Reef.ID", "Reef.Name"),
+    sep  = " \\| "
+  ) |>
+  relocate(Reef.ID, Reef.Name, .before = 1)
+
+# Look at the final tidy dataset
+View(reef_combined_tidy)
+
+# Save the tidy version
+write_csv(reef_combined_tidy, "reef_data_combined_tidy.csv")
 ```
 
 ## Data Description
