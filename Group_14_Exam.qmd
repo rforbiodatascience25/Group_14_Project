@@ -15,15 +15,19 @@ editor: visual
 
 *All group members contributed equally.*
 
+![](ChatGPT%20Image%2011.%20nov.%202025,%2011.35.39.png){fig-align="center" width="347" height="18"}
+
+DELETE BEFORE SUBMITTING: What we do: See google docs document: <https://docs.google.com/document/d/1yNVCNuAO6bL3kIM9ScEc9Kdcnw6VaJup2c3B_c9R7Nk/edit?usp=sharing>
+
 ## Background
 
-What we do: See google docs document: <https://docs.google.com/document/d/1yNVCNuAO6bL3kIM9ScEc9Kdcnw6VaJup2c3B_c9R7Nk/edit?usp=sharing>
+Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. 2019 called "A global analysis of coral bleaching over the past two decades," published in Nature, addresses how bleaching patterns have varied globally over recent decades.
 
-Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. addresses how bleaching patterns have varied globally over recent decades.
+The consequences of coral bleaching affect the climate in terms of ecosystem damage due to loss of species and thereby biodiversity, but it also has major social and economic consequences for people who depend on reefs for food and tourism. The species loss can also mean indirect consequences in research e.g., loss of molecules that could've been discovered and used pharmaceutically or elsewhere.
 
-Using field observations collected at 3,351 reef sites across 81 countries between 1998 and 2017, the authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns.
+Using field observations collected at 3,351 reef sites across 81 countries between 1998 and 2017, the authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns. \[1\]
 
-Here we want to perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below.
+In this project we want to perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below.
 
 ## Data Description
 
@@ -98,3 +102,7 @@ write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
 ## Data Analysis
 
 ## Conclusion
+
+## References
+
+\[1\] Sully, S., Burkepile, D.E., Donovan, M.K. *et al.* A global analysis of coral bleaching over the past two decades. *Nat Commun* **10**, 1264 (2019). https://doi.org/10.1038/s41467-019-09238-2
