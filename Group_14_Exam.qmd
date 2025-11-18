@@ -54,7 +54,7 @@ reef_combined_untidy <- data1 |>
   left_join(data2, by = "ReefID_Name")
 
 # Save the untidy version
-write_csv(reef_combined_untidy, "reef_data_combined_untidy.csv")
+write_csv(reef_combined_untidy, "data/_raw/reef_data_combined_untidy.csv")
 ```
 
 We tidy the combined column, ReefID_Name into two separate variables.
@@ -72,7 +72,7 @@ reef_combined_tidy <- reef_combined_untidy |>
 View(reef_combined_tidy)
 
 # Save the tidy version
-write_csv(reef_combined_tidy, "reef_data_combined_tidy.csv")
+write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
 ```
 
 ## Data Analysis
