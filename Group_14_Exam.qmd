@@ -111,7 +111,7 @@ We want to remove all the observations where Ocean has NA values and we can see 
 ```{r}
 reef_clean <-
   reef_combined_tidy_test |>
-  filter(!is.na(Ocean))
+  drop_na(Ocean)
 ```
 
 Furthermore we want to check how many observations we have for each year.
