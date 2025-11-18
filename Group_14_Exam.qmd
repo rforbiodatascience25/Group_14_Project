@@ -99,6 +99,36 @@ View(reef_combined_tidy)
 write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
 ```
 
+We want to check if the variable Ocean has any NA values. For this we can use the function count.
+
+```{r}
+reef_combined_tidy |>
+  count(Ocean)
+```
+
+We want to remove all the observations where Ocean has NA values and we can see in the following that 57 observations has NA values. For this we can use filter to remove them from the dataset.
+
+```{r}
+reef_clean <-
+  reef_combined_tidy_test |>
+  filter(!is.na(Ocean))
+```
+
+Furthermore we want to check how many observations we have for each year.
+
+```{r}
+reef_clean |>
+  count(Year)
+```
+
+We see that three years (1998, 2000 and 2001) does not contain many observations so these we want to filter out as well.
+
+(to be continued.. remove n \< 50 and save in reef_clean)
+
+```{r}
+reef_clean |>
+```
+
 ## Data Analysis
 
 ## Conclusion
