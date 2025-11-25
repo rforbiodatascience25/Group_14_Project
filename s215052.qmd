@@ -144,7 +144,7 @@ data3 |>
 
 ```{r}
 data3 |> 
-  count(Depth) |>
+  count(Depth) |> 
   arrange(desc(n))
 ```
 
@@ -158,4 +158,64 @@ library(dplyr)
 library("tidyverse")
 
 data3 |> filter(Year > 2010) |> count(Year)
+```
+
+```{r}
+library(dplyr)
+
+data3 |>
+  filter(Depth == 10) |>
+  summarise(mean_temp = mean(Temperature_Kelvin, na.rm = TRUE))
+
+```
+
+```{r}
+library(dplyr)
+
+data3 |>
+  group_by(Depth) |>
+  summarise(mean_temp = mean(Temperature_Kelvin, na.rm = TRUE)) |>
+  arrange(desc(Depth))
+
+```
+
+```{r}
+data3 <- data3 |>
+  mutate(
+    depth_group = cut(
+      Depth,
+      breaks = seq(0, max(Depth), by = 3),
+      right = FALSE
+    )
+  )
+
+```
+
+```{r}
+data3 |> 
+  group_by(Ocean, depth_group) |>
+  summarise(mean_temp = mean(Temperature_Kelvin, na.rm = TRUE))
+
+```
+
+```{r}
+library(dplyr)
+
+data3 %>%
+  group_by(depth_group, Ocean) %>%
+  summarise(mean_temp = mean(Temperature_Kelvin, na.rm = TRUE))
+```
+
+```{r}
+library(dplyr)
+library(tidyr)
+
+data3 |>
+  group_by(Ocean, depth_group) |>
+  summarise(mean_temp = mean(Temperature_Kelvin, na.rm = TRUE), .groups = "drop") |>
+  pivot_wider(
+    names_from = Ocean,
+    values_from = mean_temp
+  )
+
 ```
