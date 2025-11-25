@@ -24,3 +24,138 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+#| message: false
+library("tidyverse")
+file1 <- read_csv(file = "data/_raw/Reef_Check_with_cortad_variables_with_annual_rate_of_SST_change (1).csv")
+file2 <- read_csv(file = "data/_raw/Reef Check Data Raw (1).csv")
+```
+
+```{r}
+data3 <- read_csv(file="data/_raw/reef_data_combined_tidy.csv")
+```
+
+```{r}
+library(ggplot2)
+ggplot(data = data3,
+       mapping = aes(x = Year,
+                     y = Average_bleaching)) +
+  geom_point() +
+  labs(x="Year", y="Average_bleaching", title="T1 Scatterplot")
+```
+
+```{r}
+ggplot(data = data3,
+       mapping = aes(x = Year,
+                     y = Average_bleaching)) +
+  geom_point(alpha=(2)) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(x="Year", y="Average_bleaching", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+```
+
+```{r}
+ggplot(data = data3,
+       mapping = aes(x = Year,
+                     y = Temperature_Kelvin)) +
+  geom_point(alpha=(2)) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(x="Year", y="Temperature_Kelvin", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+```
+
+```{r}
+ggplot(data = data3,
+       mapping = aes(x = Average_bleaching,
+                     y = Temperature_Kelvin)) +
+  geom_point(alpha=(2)) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(x="Average_bleaching", y="Temperature_Kelvin", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+```
+
+```{r}
+library(ggplot2)
+ggplot(data = data3,
+       mapping = aes(x = Ocean,
+                     y = Temperature_Mean)) +
+  geom_point() +
+  labs(x="Ocean", y="Temperature", title="T1 Scatterplot")
+```
+
+```{r}
+ggplot(data = data3,
+       mapping = aes(x = Latitude.Degrees,
+                     y = Average_bleaching)) +
+  geom_point(alpha=(2)) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(x="Latitude.Degrees", y="Average_bleaching", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+```
+
+```{r}
+library("ggplot2")
+ggplot(data = data3 |> filter(Average_bleaching>99.9),
+       mapping = aes(x = Year,
+                     y = Average_bleaching,
+                     fill="Ocean",
+                     color="Ocean"
+                     )) +
+  geom_point() +
+  facet_wrap(~ Ocean)  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+
+  labs(x="Year", y="Average bleaching", title="Something",fill="Ocean",color="Ocean")
+```
+
+```{r}
+data3 |> filter(Average_bleaching > 99.9) |> filter(Ocean == "Pacific") |> count()
+```
+
+```{r}
+data3 |> filter(Average_bleaching > 99.9) |> filter(Ocean == "Atlantic") |> count()
+```
+
+```{r}
+library(dplyr)
+
+data3 |> filter(Year > 1900) |> count(Year)
+
+```
+
+```{r}
+data3 |> count(is.na(Ocean))
+```
+
+```{r}
+data3 |> count(Ocean)
+```
+
+```{r}
+data3 |> count(Depth)
+```
+
+```{r}
+data3 |> 
+  summarise(n_depths = n_distinct(Depth))
+```
+
+```{r}
+data3 |> 
+  count(Depth) |>
+  arrange(desc(n))
+```
+
+```{r}
+getOption("tibble.width")
+getOption("tibble.print_max")
+```
+
+```{r}
+library(dplyr)
+library("tidyverse")
+
+data3 |> filter(Year > 2010) |> count(Year)
+```
