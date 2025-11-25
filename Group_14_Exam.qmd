@@ -171,7 +171,82 @@ reef_clean <- reef_clean |>
   mutate(Temperature_Celsius = Temperature_Kelvin - 273.15)
 ```
 
+We investigate the temperature development over time:
+
+```{r}
+ggplot(data = reef_clean,
+       mapping = aes(x = Year,
+                     y = Temperature_Celsius)) +
+  geom_point(alpha=(2)) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(x="Year", y="Temperature_Celsius", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+```
+
+In the Red Sea and the Arabian Gulf, the temperature has decreased in the included time period, whereas in the temperature in the Pacific, Atlantic and Indian Sea has increased. It is important to highlight that this only reflects the temperature where the samples were taken and not nessercerily the overall climate tendency.
+
+We investigate the latitude and temperature connection:
+
+```{r}
+ggplot(data = reef_clean,
+       mapping = aes(x = Latitude.Degrees,
+                     y = Temperature_Celsius)) +
+  geom_point(alpha=(2)) +
+  labs(x="Latidtude.Degrees", y="Temperature_Celsius", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+
+```
+
+The possitive latitudes are north from equator and the negative are south. The data points from the Pacific, Atlantic, and Indian oceans cover both equator, north and south, with the pacific ocean having a more even spread of data points covering the latitude range.
+
+We note that there's a great variation in the measured temperatures at the same latitudes. We investigate the depths of the sampling affect on the temperature:
+
+```{r}
+ggplot(data = reef_clean,
+       mapping = aes(x = Temperature_Celsius,
+                     y = Depth)) +
+  geom_point(alpha=(2)) +
+  labs(x="Temperature_Celsius", y="Depth", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+
+```
+
+#### Zooming in on the Pacific Ocean
+
+Due to the Pacific Ocean having a lot of data points distributed along the latitudes, we go further with the bleaching analysis in this ocean.
+
+We combine ggplot an a pipeline to only see Pacific Ocean data with latitudes and average bleaching:
+
+```{r}
+reef_clean |> 
+  select(Ocean = Pacific) |> 
+  ggplot(data = reef_clean,
+       mapping = aes(x = Latitude.Degrees,
+                     y = Average_bleaching)) +
+  geom_point(alpha=(2)) +
+  labs(x="Latitude.Degrees", y="Average_bleaching", title="T10 Scatterplot",fill="Ocean",color="Ocean")
+
+```
+
+The average bleaching seems higher for latitudes from -5 and further south and +5 and further north.
+
+The hypothesis: READ IN ARTICLE, something about species diversity
+
+Lastly we investigate the average bleaching over the years for the Pacific Ocean, trying to replicate figure 3
+
+```{r}
+reef_clean |> 
+  select(Ocean = Pacific) |> 
+  ggplot(data = reef_clean,
+       mapping = aes(x = factor(Year),
+                     y = Average_bleaching)) +
+  geom_boxplot(alpha=(2)) +
+  labs(x="Year", y="Average_bleaching", title="Boxplot")
+```
+
 ## Conclusion
+
+Coral bleaching is a global issue...
 
 ## References
 
