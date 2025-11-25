@@ -114,7 +114,7 @@ reef_clean <-
   drop_na(Ocean)
 ```
 
-```{}
+```         
 ```
 
 ## Data Analysis
@@ -133,6 +133,42 @@ reef_clean <- reef_clean |>
   filter(Year != 1998,
          Year != 2000,
          Year != 2001)
+```
+
+We make a plot based on the different seas to see if any datapoints stands out:
+
+```{r}
+ggplot(data = reef_clean,
+       mapping = aes(x = Year,
+                     y = Average_bleaching)) +
+  geom_point(alpha=(2)) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(x="Year", y="Average_bleaching", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  facet_wrap(~ Ocean)
+```
+
+We see that the East Pacific only has few data points. We count them:
+
+```{r}
+reef_clean |> 
+  count(Ocean)
+```
+
+We conclude that the East pacific has too few data points for further analysis when comparing to the other seas. Hence, we filter it out.
+
+```{r}
+reef_clean <- reef_clean |>
+  filter(Ocean != "East Pacific")
+```
+
+```         
+```
+
+Making a column with the temperatures in degrees celsius:
+
+```{r}
+reef_clean <- reef_clean |>
+  mutate(Temperature_Celsius = Temperature_Kelvin - 273.15)
 ```
 
 ## Conclusion
