@@ -129,7 +129,7 @@ reef_clean |>
 We see that three years (1998, 2000 and 2001) does not contain many observations so these we want to filter out as well.
 
 ```{r}
-reef_clean |>
+reef_clean <- reef_clean |>
   filter(Year != 1998,
          Year != 2000,
          Year != 2001)
