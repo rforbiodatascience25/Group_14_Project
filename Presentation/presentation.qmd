@@ -1,0 +1,113 @@
+---
+title: "Coral reefs increased stress "
+author: "Group 14"
+format:
+  revealjs:
+    theme: blue-theme.scss
+---
+
+## Introduction
+
+Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress.
+
+The consequences of coral bleaching affect the climate in terms of ecosystem damage due to loss of species and thereby biodiversity, but it also has major social and economic consequences for people who depend on reefs for food and tourism.
+
+Using field observations collected at 3,351 reef sites across 81 countries between 1998 and 2017, the authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns. \[1\]
+
+In this project we want to perform Data Wrangling and Data Analysis on the datasets from the study.
+
+```{=html}
+<img src="coral_cropped.png" style="
+  position:absolute;
+  bottom:0;
+  left:50%;
+  height:30vh;                     /* freely change this */
+  width:auto;                      /* remove width locking */
+  transform:translate(-50%, 50%) scaleX(2.12);
+  transform-origin: center bottom;
+  z-index:-1;
+  opacity:0.95;">
+```
+
+## Background
+
+```{=html}
+<img src="coral_cropped.png" style="
+  position:absolute;
+  bottom:0;
+  left:50%;
+  height:30vh;                     /* freely change this */
+  width:auto;                      /* remove width locking */
+  transform:translate(-50%, 50%) scaleX(2.12);
+  transform-origin: center bottom;
+  z-index:-1;
+  opacity:0.95;">
+```
+
+## Methods
+
+-   Add content here
+
+```{=html}
+<img src="coral_cropped.png" style="
+  position:absolute;
+  bottom:0;
+  left:50%;
+  height:30vh;                     /* freely change this */
+  width:auto;                      /* remove width locking */
+  transform:translate(-50%, 50%) scaleX(2.12);
+  transform-origin: center bottom;
+  z-index:-1;
+  opacity:0.95;">
+```
+
+## Results
+
+-   Add content here
+
+```{=html}
+<img src="coral_cropped.png" style="
+  position:absolute;
+  bottom:0;
+  left:50%;
+  height:30vh;                     /* freely change this */
+  width:auto;                      /* remove width locking */
+  transform:translate(-50%, 50%) scaleX(2.12);
+  transform-origin: center bottom;
+  z-index:-1;
+  opacity:0.95;">
+```
+
+## Discussion
+
+-   Add content here
+
+```{=html}
+<img src="coral_cropped.png" style="
+  position:absolute;
+  bottom:0;
+  left:50%;
+  height:30vh;                     /* freely change this */
+  width:auto;                      /* remove width locking */
+  transform:translate(-50%, 50%) scaleX(2.12);
+  transform-origin: center bottom;
+  z-index:-1;
+  opacity:0.95;">
+```
+
+## Conclusion
+
+-   Add content here
+
+```{=html}
+<img src="coral_cropped.png" style="
+  position:absolute;
+  bottom:0;
+  left:50%;
+  height:30vh;                     /* freely change this */
+  width:auto;                      /* remove width locking */
+  transform:translate(-50%, 50%) scaleX(2.12);
+  transform-origin: center bottom;
+  z-index:-1;
+  opacity:0.95;">
+```

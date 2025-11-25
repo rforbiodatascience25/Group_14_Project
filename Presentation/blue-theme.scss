@@ -1,0 +1,65 @@
+/*-- scss:rules --*/
+
+/* ======== GLOBAL SLIDE BACKGROUND ======== */
+.reveal {
+  background-color: #0D1B2A; /* Dark navy blue */
+  color: #FFFFFF;  
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ======== HEADINGS ======== */
+.reveal h1, 
+.reveal h2, 
+.reveal h3 {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+}
+
+/* ======== BODY TEXT ======== */
+.reveal p, 
+.reveal li {
+  color: #FFFFFF;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+  font-size: 1.1rem;
+}
+
+/* ======== LINKS ======== */
+.reveal a {
+  color: #61A5C2;
+  text-decoration: underline;
+}
+
+.reveal a:hover {
+  color: #89C2D9;
+}
+
+/* ======== CODE BLOCKS ======== */
+.reveal pre code {
+  background-color: #1B263B;
+  padding: 10px;
+  border-radius: 8px;
+  color: #E0E1DD;
+}
+
+/* ======== QUOTES ======== */
+.reveal blockquote {
+  border-left: 4px solid #61A5C2;
+  padding-left: 15px;
+  color: #E0E1DD;
+  font-style: italic;
+}
+
+
+.bottom-image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 20vh;
+  width: 300%;
+  transform: translateX(-50%);
+  z-index: -1;
+  opacity: 0.6;
+}
+  
