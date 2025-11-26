@@ -23,9 +23,9 @@ DELETE BEFORE SUBMITTING: What we do: See google docs document: <https://docs.go
 
 Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. 2019 called "A global analysis of coral bleaching over the past two decades," published in Nature, addresses how bleaching patterns have varied globally over recent decades.
 
-The consequences of coral bleaching affect the climate in terms of ecosystem damage due to loss of species and thereby biodiversity, but it also has major social and economic consequences for people who depend on reefs for food and tourism. The species loss can also mean indirect consequences in research e.g., loss of molecules that could've been discovered and used pharmaceutically or elsewhere.
+The consequences of coral bleaching affect the climate in terms of ecosystem damage due to loss of species and thereby biodiversity, but it also has major social and economic consequences for people who depend on reefs for food and tourism. The species loss can also mean indirect consequences in research e.g., loss of molecules that could have been discovered and used pharmaceutically or elsewhere.
 
-Using field observations collected at 3,351 reef sites across 81 countries between 1998 and 2017, the authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns. \[1\]
+Using field observations collected at 3,351 reef sites across 81 countries between 1998 and 2017, the authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns \[1\].
 
 In this project we want to perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below.
 
@@ -106,7 +106,7 @@ reef_combined_tidy |>
   count(Ocean)
 ```
 
-We want to remove all the observations where Ocean has NA values and we can see in the following that 57 observations has NA values. For this we can use filter to remove them from the dataset.
+We want to remove all the observations where Ocean has NA values and we can see that 57 observations has NA values. For this we can use drop_na to remove them from the dataset.
 
 ```{r}
 reef_clean <-
@@ -114,19 +114,16 @@ reef_clean <-
   drop_na(Ocean)
 ```
 
-```         
-```
-
 ## Data Analysis
 
-Wee want to check how many observations we have for each year.
+We want to check how many observations we have for each year.
 
 ```{r}
 reef_clean |>
   count(Year)
 ```
 
-We see that three years (1998, 2000 and 2001) does not contain many observations so these we want to filter out as well.
+We see that three years (1998, 2000 and 2001) does not contain many observations so these we want to filter out.
 
 ```{r}
 reef_clean <- reef_clean |>
@@ -135,78 +132,78 @@ reef_clean <- reef_clean |>
          Year != 2001)
 ```
 
-We make a plot based on the different seas to see if any datapoints stands out:
+We make a plot based on the different seas to see if any datapoints stands out.
+
+(LINEAR MODEL?)
 
 ```{r}
 ggplot(data = reef_clean,
        mapping = aes(x = Year,
                      y = Average_bleaching)) +
-  geom_point(alpha=(2)) +
+  geom_point(alpha = (2)) +
   geom_smooth(method = "lm", se = TRUE) +
-  labs(x="Year", y="Average_bleaching", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  labs(x="Year", y="Average_bleaching", title="T10 Scatterplot", fill="Ocean", color="Ocean") +
   facet_wrap(~ Ocean)
 ```
 
-We see that the East Pacific only has few data points. We count them:
+From the above, we see that the East Pacific only has few data points. We count them:
 
 ```{r}
 reef_clean |> 
   count(Ocean)
 ```
 
-We conclude that the East pacific has too few data points for further analysis when comparing to the other seas. Hence, we filter it out.
+We conclude that, based on six rows, the East pacific has too few data points for further analysis when comparing to the other seas. Hence, we filter it out.
 
 ```{r}
 reef_clean <- reef_clean |>
   filter(Ocean != "East Pacific")
 ```
 
-```         
-```
-
-Making a column with the temperatures in degrees celsius:
+We want to add another column with the temperatures in degrees Celsius using mutate.
 
 ```{r}
 reef_clean <- reef_clean |>
   mutate(Temperature_Celsius = Temperature_Kelvin - 273.15)
 ```
 
-We investigate the temperature development over time:
+We now investigate the temperature development over time.
+
+(IGEN LINEAR MODEL??)
 
 ```{r}
 ggplot(data = reef_clean,
        mapping = aes(x = Year,
                      y = Temperature_Celsius)) +
-  geom_point(alpha=(2)) +
+  geom_point(alpha = (2)) +
   geom_smooth(method = "lm", se = TRUE) +
-  labs(x="Year", y="Temperature_Celsius", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  labs(x = "Year", y = "Temperature_Celsius", title = "T10 Scatterplot", fill="Ocean", color="Ocean") +
   facet_wrap(~ Ocean)
 ```
 
 In the Red Sea and the Arabian Gulf, the temperature has decreased in the included time period, whereas in the temperature in the Pacific, Atlantic and Indian Sea has increased. It is important to highlight that this only reflects the temperature where the samples were taken and not nessercerily the overall climate tendency.
 
-We investigate the latitude and temperature connection:
+We here investigate the latitude and temperature connection.
 
 ```{r}
 ggplot(data = reef_clean,
        mapping = aes(x = Latitude.Degrees,
                      y = Temperature_Celsius)) +
-  geom_point(alpha=(2)) +
-  labs(x="Latidtude.Degrees", y="Temperature_Celsius", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  geom_point(alpha = (2)) +
+  labs(x = "Latidtude.Degrees", y = "Temperature_Celsius", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean") +
   facet_wrap(~ Ocean)
-
 ```
 
 The possitive latitudes are north from equator and the negative are south. The data points from the Pacific, Atlantic, and Indian oceans cover both equator, north and south, with the pacific ocean having a more even spread of data points covering the latitude range.
 
-We note that there's a great variation in the measured temperatures at the same latitudes. We investigate the depths of the sampling affect on the temperature:
+We note that there is a great variation in the measured temperatures at the same latitudes. We investigate the depths of the sampling affect on the temperature:
 
 ```{r}
 ggplot(data = reef_clean,
        mapping = aes(x = Temperature_Celsius,
                      y = Depth)) +
-  geom_point(alpha=(2)) +
-  labs(x="Temperature_Celsius", y="Depth", title="T10 Scatterplot",fill="Ocean",color="Ocean") +
+  geom_point(alpha = (2)) +
+  labs(x = "Temperature_Celsius", y = "Depth", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean") +
   facet_wrap(~ Ocean)
 
 ```
@@ -215,7 +212,7 @@ ggplot(data = reef_clean,
 
 Due to the Pacific Ocean having a lot of data points distributed along the latitudes, we go further with the bleaching analysis in this ocean.
 
-We combine ggplot an a pipeline to only see Pacific Ocean data with latitudes and average bleaching:
+We combine ggplot in a pipeline to only see Pacific Ocean data with latitudes and average bleaching.
 
 ```{r}
 reef_clean |> 
@@ -223,16 +220,15 @@ reef_clean |>
   ggplot(data = reef_clean,
        mapping = aes(x = Latitude.Degrees,
                      y = Average_bleaching)) +
-  geom_point(alpha=(2)) +
-  labs(x="Latitude.Degrees", y="Average_bleaching", title="T10 Scatterplot",fill="Ocean",color="Ocean")
-
+  geom_point(alpha = (2)) +
+  labs(x = "Latitude.Degrees", y = "Average_bleaching", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean")
 ```
 
 The average bleaching seems higher for latitudes from -5 and further south and +5 and further north.
 
 The hypothesis: READ IN ARTICLE, something about species diversity
 
-Lastly we investigate the average bleaching over the years for the Pacific Ocean, trying to replicate figure 3
+Lastly we investigate the average bleaching over the years for the Pacific Ocean, trying to replicate figure 3.
 
 ```{r}
 reef_clean |> 
@@ -240,8 +236,8 @@ reef_clean |>
   ggplot(data = reef_clean,
        mapping = aes(x = factor(Year),
                      y = Average_bleaching)) +
-  geom_boxplot(alpha=(2)) +
-  labs(x="Year", y="Average_bleaching", title="Boxplot")
+  geom_boxplot(alpha = (2)) +
+  labs(x = "Year", y = "Average_bleaching", title = "Boxplot")
 ```
 
 ## Conclusion
