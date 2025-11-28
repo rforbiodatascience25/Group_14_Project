@@ -15,10 +15,6 @@ editor: visual
 
 *All group members contributed equally.*
 
-![](ChatGPT%20Image%2011.%20nov.%202025,%2011.35.39.png){fig-align="center" width="347" height="18"}
-
-DELETE BEFORE SUBMITTING: What we do: See google docs document: <https://docs.google.com/document/d/1yNVCNuAO6bL3kIM9ScEc9Kdcnw6VaJup2c3B_c9R7Nk/edit?usp=sharing>
-
 ## Background
 
 Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. 2019 called "A global analysis of coral bleaching over the past two decades," published in Nature, addresses how bleaching patterns have varied globally over recent decades.
