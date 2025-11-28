@@ -21,8 +21,8 @@ In this project we want to perform Data Wrangling and Data Analysis on the datas
   position:absolute;
   bottom:0;
   left:50%;
-  height:30vh;                     /* freely change this */
-  width:auto;                      /* remove width locking */
+  height:30vh;                     
+  width:auto;                      
   transform:translate(-50%, 50%) scaleX(2.12);
   transform-origin: center bottom;
   z-index:-1;
@@ -36,8 +36,8 @@ In this project we want to perform Data Wrangling and Data Analysis on the datas
   position:absolute;
   bottom:0;
   left:50%;
-  height:30vh;                     /* freely change this */
-  width:auto;                      /* remove width locking */
+  height:30vh;                     
+  width:auto;                      
   transform:translate(-50%, 50%) scaleX(2.12);
   transform-origin: center bottom;
   z-index:-1;
@@ -53,8 +53,8 @@ In this project we want to perform Data Wrangling and Data Analysis on the datas
   position:absolute;
   bottom:0;
   left:50%;
-  height:30vh;                     /* freely change this */
-  width:auto;                      /* remove width locking */
+  height:30vh;                     
+  width:auto;                      
   transform:translate(-50%, 50%) scaleX(2.12);
   transform-origin: center bottom;
   z-index:-1;
@@ -70,8 +70,8 @@ In this project we want to perform Data Wrangling and Data Analysis on the datas
   position:absolute;
   bottom:0;
   left:50%;
-  height:30vh;                     /* freely change this */
-  width:auto;                      /* remove width locking */
+  height:30vh;                     
+  width:auto;                      
   transform:translate(-50%, 50%) scaleX(2.12);
   transform-origin: center bottom;
   z-index:-1;
@@ -87,8 +87,8 @@ In this project we want to perform Data Wrangling and Data Analysis on the datas
   position:absolute;
   bottom:0;
   left:50%;
-  height:30vh;                     /* freely change this */
-  width:auto;                      /* remove width locking */
+  height:30vh;                     
+  width:auto;                      
   transform:translate(-50%, 50%) scaleX(2.12);
   transform-origin: center bottom;
   z-index:-1;
@@ -104,8 +104,8 @@ In this project we want to perform Data Wrangling and Data Analysis on the datas
   position:absolute;
   bottom:0;
   left:50%;
-  height:30vh;                     /* freely change this */
-  width:auto;                      /* remove width locking */
+  height:30vh;                     
+  width:auto;                      
   transform:translate(-50%, 50%) scaleX(2.12);
   transform-origin: center bottom;
   z-index:-1;
