@@ -56,6 +56,7 @@ The aim of this project has been to tidy and combine two datasets and by doing t
 ```{r}
 #| message: false
 library("tidyverse")
+library("ggridges")
 ```
 
 ## Load Data
@@ -104,6 +105,12 @@ We want to check if the variable Ocean has any NA values. For this we can use th
 ```{r}
 reef_combined_tidy |>
   count(Ocean)
+```
+
+We save the the the reef_clean dataset:
+
+```{r}
+write_csv(reef_clean, "data/_raw/reef_clean.csv")
 ```
 
 We want to remove all the observations where Ocean has NA values and we can see that 57 observations has NA values. For this we can use drop_na to remove them from the dataset.
@@ -164,14 +171,37 @@ reef_clean <- reef_clean |>
   mutate(Temperature_Celsius = Temperature_Kelvin - 273.15)
 ```
 
+We look at the temperatures in the different oceans too get insight into the dataset:
+
+```{r}
+ggplot(data = reef_clean,
+             mapping = aes(x = Temperature_Celsius,
+                           y = Ocean,
+                           fill = Ocean)) +
+  geom_density_ridges(alpha = 0.5) +
+  scale_fill_viridis_d(option = "plasma") +
+  labs(x = "Temperature_Celsius",
+       y = "Ocean",
+       title = "Title",
+       caption = "x") +
+  theme_minimal(base_family = "Avenir",
+                base_size = 12) +
+  theme(legend.position = "bottom")
+```
+
+The reason for the variations in temperature is that the samples are taken in different depths, sites and timepoints \[1\].
+
 We now investigate the temperature development over time.
 
 ```{r}
 ggplot(data = reef_clean,
        mapping = aes(x = Year,
                      y = Temperature_Celsius)) +
-  geom_point(alpha = (2)) +
-  labs(x = "Year", y = "Temperature_Celsius", title = "T10 Scatterplot", fill="Ocean", color="Ocean") +
+  geom_point(color= "#0D0887", alpha = (0.5)) +
+  labs(x = "Year", y = "Temperature_Celsius", title = "Temperature development over the years", fill="Ocean", color="Ocean") +
+  theme_minimal(base_family = "Avenir",
+                base_size = 12) +
+  theme(legend.position = "bottom")+
   facet_wrap(~ Ocean)
 ```
 
@@ -183,8 +213,11 @@ We here investigate the latitude and temperature connection.
 ggplot(data = reef_clean,
        mapping = aes(x = Latitude.Degrees,
                      y = Temperature_Celsius)) +
-  geom_point(alpha = (2)) +
+  geom_point(color= "#0D0887", alpha = (0.5)) +
   labs(x = "Latidtude.Degrees", y = "Temperature_Celsius", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean") +
+  theme_minimal(base_family = "Avenir",
+                base_size = 12) +
+  theme(legend.position = "bottom")+
   facet_wrap(~ Ocean)
 ```
 
@@ -196,11 +229,40 @@ We note that there is a great variation in the measured temperatures at the same
 ggplot(data = reef_clean,
        mapping = aes(x = Temperature_Celsius,
                      y = Depth)) +
-  geom_point(alpha = (2)) +
-  labs(x = "Temperature_Celsius", y = "Depth", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean") +
+  geom_point(color= "#0D0887", alpha = (0.5)) +
+  labs(x = "Temperature Celsius", y = "Depth [m]", title = "Temperatures based on depth of the sampling", fill = "Ocean", color = "Ocean") +
+  theme_minimal(base_family = "Avenir",
+                base_size = 12) +
+  theme(legend.position = "bottom")+
   facet_wrap(~ Ocean)
 
 ```
+
+There seems to be no clear relationship between the temperature and the depth of the measurement. We try and see this with numbers. We make a variable called depth_group in which the observations get allocated to:
+
+```{r}
+reef_clean <- reef_clean |>
+  mutate(depth_group = cut(
+      Depth,
+      breaks = seq(0, max(Depth), by = 3),
+      right = FALSE
+    )
+  )
+```
+
+Here we see the results:
+
+```{r}
+reef_clean |>
+  group_by(Ocean, depth_group) |>
+  summarise(mean_temp = mean(Temperature_Celsius, na.rm = TRUE), .groups = "drop") |>
+  pivot_wider(
+    names_from = Ocean,
+    values_from = mean_temp
+  )
+```
+
+The depths will not be taken into further account and doesn't seem to influence the temperature in the seas.
 
 #### Zooming in on the Pacific Ocean
 
@@ -214,8 +276,11 @@ reef_clean |>
   ggplot(data = reef_clean,
        mapping = aes(x = Latitude.Degrees,
                      y = Average_bleaching)) +
-  geom_point(alpha = (2)) +
-  labs(x = "Latitude.Degrees", y = "Average_bleaching", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean")
+  geom_point(color= "#0D0887", alpha = (0.5)) +
+  labs(x = "Latitude in degrees", y = "Average bleaching", title = "Average bleaching in the Pacific based on latitude", fill = "Ocean", color = "Ocean")+
+  theme_minimal(base_family = "Avenir",
+                base_size = 12) +
+  theme(legend.position = "bottom")
 ```
 
 The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations \[1\].
