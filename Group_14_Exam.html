@@ -130,6 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The consequences of coral bleaching affect the climate in terms of ecosystem damage due to loss of species and thereby biodiversity, but it also has major social and economic consequences for people who depend on reefs for food and tourism. The species loss can also mean indirect consequences in research e.g., loss of molecules that could have been discovered and used pharmaceutically or elsewhere.</p>
 <p>Using field observations collected at 3,351 reef sites across 81 countries between 1998 and 2017, the authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns [1].</p>
 <p>In this project we want to perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below.</p>
+<p><img src="images/clipboard-541288159.png" class="img-fluid"></p>
 </section>
 <section id="data-description" class="level2">
 <h2 class="anchored" data-anchor-id="data-description">Data Description</h2>
@@ -153,6 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="aim" class="level2">
 <h2 class="anchored" data-anchor-id="aim">Aim</h2>
 <p>The aim of this project has been to tidy and combine two datasets and by doing this, be able to explore coral bleaching issues around the world. This is a collaborative project developed using Git and the workflow is also a part of the product.</p>
+<p>During the project, we have followed the style of the “Data Science Cycle” as seen below. The work has primarily been focused on tidying as well as visualisation.<img src="images/clipboard-1447661144.png" class="img-fluid"></p>
 </section>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load Libraries</h2>
@@ -470,29 +472,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations [1].</p>
-<p>Lastly we investigate the average bleaching over the years for the Pacific Ocean, trying to replicate figure 3.</p>
+<p>Lastly we investigate the average bleaching over the years for the Pacific Ocean. To do this, we make a new dataset containing the year and the average bleaching measured for that year.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>reef_clean <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Ocean =</span> Pacific) <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> reef_clean,</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Year),</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> Average_bleaching)) <span class="sc">+</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> (<span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Average_bleaching"</span>, <span class="at">title =</span> <span class="st">"Boxplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data_pacific_yearly <span class="ot">&lt;-</span> reef_clean <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Ocean <span class="sc">==</span> <span class="st">"Pacific"</span>) <span class="sc">|&gt;</span>           </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">|&gt;</span>                      </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_bleaching =</span> <span class="fu">mean</span>(Average_bleaching, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We plot the data together with a regression to investigate if coral bleaching has become worse over the years in the Pacific.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_pacific_yearly,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> mean_bleaching)) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#0D0887"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"red"</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">linewidth =</span> <span class="fl">1.3</span>) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">7</span>)) <span class="sc">+</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> data_pacific_yearly<span class="sc">$</span>Year) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">labs</span>(</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Mean % Bleaching"</span>,</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Mean Coral Bleaching per Year (Pacific Ocean)"</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Group_14_Exam_files/figure-html/unnamed-chunk-20-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="Group_14_Exam_files/figure-html/unnamed-chunk-21-1.svg" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>In the pacific ocean, the average bleaching has increased over the years…</p>
+<p>We make a model to extract some information about the linear fit:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mean_bleaching <span class="sc">~</span> Year, <span class="at">data =</span> data_pacific_yearly)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mean_bleaching ~ Year, data = data_pacific_yearly)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.3032 -0.5607 -0.2361  0.2789  2.1769 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -475.56896  102.30550  -4.649 0.000376 ***
+Year           0.23804    0.05091   4.676 0.000357 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9387 on 14 degrees of freedom
+Multiple R-squared:  0.6096,    Adjusted R-squared:  0.5817 
+F-statistic: 21.86 on 1 and 14 DF,  p-value: 0.0003572</code></pre>
+</div>
+</div>
+<p>We see that the adjusted R-squared value is 0.5817, which is not high enough to conclude anything with certainty. However, the results can still be used to see a tendency.</p>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Coral bleaching is a global issue and requires samples from around the world, resulting in enormous data sets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool.</p>
+<p>Coral bleaching is a global issue and requires samples from around the world, resulting in enormous datasets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool. We show some general information about the data, and can conclude that there is a tendency that coral bleaching is increasing in the Pacific. Similar analysis could be made on the other Oceans but there should be an attention to if the ocean has enough data points.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
