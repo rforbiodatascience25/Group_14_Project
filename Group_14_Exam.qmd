@@ -37,7 +37,7 @@ The data contains many variables with names that include abbreviations. In the f
 
 -   SST(A): Sea Surface Temperature (Anomaly)
 
-    -   The SST is the measured sea surface temperature in degrees Celsius for the given observation. SSTA is the degree Celsius difference compared to the normal temperature at that site (typically based on a week or month). The temperatures were derived from the *Coral Reef Temperature Anomaly Database* by the article authors.
+    -   The SST is the measured sea surface temperature in Kelvin for the given observation. SSTA is the degree Kelvin difference compared to the normal temperature at that site (typically based on a week or month). The temperatures were derived from the *Coral Reef Temperature Anomaly Database* by the article authors.
 
 -   TSA: Thermal Stress Anomaly
 
@@ -45,7 +45,7 @@ The data contains many variables with names that include abbreviations. In the f
 
 -   DHW: Degree Heating Weeks
 
-    -   DHW is describing the cumulative thermal stress over a longer period. If DHW = 1, it means that a site was 1 degree Celsius above the warmest month at the site within long-term climatology. DHW is based on anomalies for a longer period (cumulative), whereas the SSTA and TSA are more like "snapshots" based on the anomaly at the time for the measurement.
+    -   DHW is describing the cumulative thermal stress over a longer period. If DHW = 1, it means that a site was 1 Kelvin above the warmest month at the site within long-term climatology. DHW is based on anomalies for a longer period (cumulative), whereas the SSTA and TSA are more like "snapshots" based on the anomaly at the time for the measurement.
 
 ## Aim
 
