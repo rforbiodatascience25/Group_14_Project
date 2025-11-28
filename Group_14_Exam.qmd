@@ -218,9 +218,7 @@ reef_clean |>
   labs(x = "Latitude.Degrees", y = "Average_bleaching", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean")
 ```
 
-The average bleaching seems higher for latitudes from -5 and further south and +5 and further north.
-
-The hypothesis: READ IN ARTICLE, something about species diversity
+The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations \[1\].
 
 Lastly we investigate the average bleaching over the years for the Pacific Ocean, trying to replicate figure 3.
 
@@ -233,6 +231,8 @@ reef_clean |>
   geom_boxplot(alpha = (2)) +
   labs(x = "Year", y = "Average_bleaching", title = "Boxplot")
 ```
+
+In the pacific ocean, the average bleaching has increased over the years...
 
 ## Conclusion
 
