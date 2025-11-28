@@ -137,15 +137,24 @@ reef_clean <- reef_clean |>
          Year != 2001)
 ```
 
-We make a plot based on the different seas to see if any datapoints stands out.
+We make a plot based on the different seas to see if any oceans stands out.
 
 ```{r}
-ggplot(data = reef_clean,
-       mapping = aes(x = Year,
-                     y = Average_bleaching)) +
-  geom_point(alpha = (2)) +
-  labs(x="Year", y="Average_bleaching", title="T10 Scatterplot", fill="Ocean", color="Ocean") +
-  facet_wrap(~ Ocean)
+reef_clean |>
+  ggplot(aes(x = Ocean, fill = Ocean)) +
+  geom_bar(colour = "black", alpha = 0.5) +
+  scale_fill_viridis_d(option = "plasma") +
+  labs(
+    title = "Number of Observations per Ocean",
+    x = "Ocean",
+    y = "Count",
+    fill = "Ocean"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "bottom",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
 ```
 
 From the above, we see that the East Pacific only has few data points. We count them:
@@ -155,7 +164,7 @@ reef_clean |>
   count(Ocean)
 ```
 
-We conclude that, based on six rows, the East pacific has too few data points for further analysis when comparing to the other seas. Hence, we filter it out.
+We conclude that the East pacific has too few data points for further analysis when comparing to the other seas. Hence, we filter it out.
 
 ```{r}
 reef_clean <- reef_clean |>
