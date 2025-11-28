@@ -4,6 +4,7 @@ author: "Group 14"
 format:
   revealjs:
     theme: default
+    self-contained: true
 ---
 
 .reveal {
