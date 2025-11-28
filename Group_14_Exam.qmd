@@ -25,6 +25,8 @@ Using field observations collected at 3,351 reef sites across 81 countries betwe
 
 In this project we want to perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below.
 
+![](images/clipboard-541288159.png)
+
 ## Data Description
 
 The data used in the can be accessed in the raw –\> data file in the Github project "Group_14_Project". The original data has been downloaded from <https://github.com/InstituteForGlobalEcology/Coral-bleaching-a-global-analysis-of-the-past-two-decades>. The specific file "Reef_Check_with_cortad_variables_with_annual_rate_of_SST_change.csv" has been the data file providing the information used for all the findings of the project. Please note that this file was already fairly tidy, and for this reason it has been untidied and split into two datasets called "reef_data_dataset1.csv" and "reef_data_dataset2.csv". This provided a better opportunity for the group to show an understanding of more functions.
@@ -46,6 +48,8 @@ The data contains many variables with names that include abbreviations. In the f
 ## Aim
 
 The aim of this project has been to tidy and combine two datasets and by doing this, be able to explore coral bleaching issues around the world. This is a collaborative project developed using Git and the workflow is also a part of the product.
+
+During the project, we have followed the style of the "Data Science Cycle" as seen below. The work has primarily been focused on tidying as well as visualisation.![](images/clipboard-1447661144.png)
 
 ## Load Libraries
 
