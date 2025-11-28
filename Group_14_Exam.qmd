@@ -64,8 +64,6 @@ The two different datasets are here loaded into the document and saved as data1 
 data1 <- read_csv(file="data/_raw/reef_data_dataset1.csv")
 data2 <- read_csv(file="data/_raw/reef_data_dataset2.csv")
 
-View(data1)
-View(data2)
 ```
 
 ## Data Wrangling
@@ -91,7 +89,6 @@ reef_combined_tidy <- reef_combined_untidy |>
   ) |>
   relocate(Reef.ID, Reef.Name, .before = 1)
 
-View(reef_combined_tidy)
 
 write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
 ```
