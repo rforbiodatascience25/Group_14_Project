@@ -53,9 +53,8 @@ The two different datasets are loaded into the document and saved as data1 and d
 
 ```{r}
 #| message: false
-data1 <- read_csv(file="data/_raw/reef_data_dataset1.csv")
-data2 <- read_csv(file="data/_raw/reef_data_dataset2.csv")
-
+data1 <- read_csv("../data/_raw/reef_data_dataset1.csv")
+data2 <- read_csv("../data/_raw/reef_data_dataset2.csv")
 ```
 
 ## Data Wrangling
@@ -68,7 +67,7 @@ Starting out with the data wrangling, we want to first combine the two datasets 
 reef_combined_untidy <- data1 |>
   left_join(data2, by = "ReefID_Name")
 
-write_csv(reef_combined_untidy, "data/_raw/reef_data_combined_untidy.csv")
+write_csv(reef_combined_untidy, "../data/_raw/reef_data_combined_untidy.csv")
 ```
 
 Now we want to tidy the dataset, and turn ReefID_Name into two separate variables. For this we use the seperate function and split them by "\|".
@@ -82,7 +81,7 @@ reef_combined_tidy <- reef_combined_untidy |>
   ) |>
   relocate(Reef.ID, Reef.Name, .before = 1)
 
-write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
+write_csv(reef_combined_tidy, "../data/_raw/reef_data_combined_tidy.csv")
 ```
 
 We want to check if the variable Ocean has any NA values. For this we can use the function count.
