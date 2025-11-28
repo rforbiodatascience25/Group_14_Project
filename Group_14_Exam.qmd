@@ -312,7 +312,7 @@ ggplot(data_pacific_yearly,
      )
 ```
 
-We make a model to extract some information about the linear fit:
+We make a linear model to extract some information about the linear fit:
 
 ```{r}
 model <- lm(mean_bleaching ~ Year, data = data_pacific_yearly)
