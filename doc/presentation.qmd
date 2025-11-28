@@ -6,6 +6,24 @@ format:
     theme: default
 ---
 
+.reveal {
+  background-color: #0D1B2A; 
+  color: #FFFFFF;  
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+  font-family: "Montserrat", sans-serif;
+  
+.bottom-image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 20vh;
+  width: 300%;
+  transform: translateX(-50%);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+
 ## Introduction
 
 Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress.
