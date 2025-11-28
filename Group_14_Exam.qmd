@@ -308,7 +308,7 @@ In the pacific ocean, the average bleaching has increased over the years...
 
 ## Conclusion
 
-Coral bleaching is a global issue...
+Coral bleaching is a global issue and requires samples from around the world, resulting in enormous data sets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool.
 
 ## References
 
