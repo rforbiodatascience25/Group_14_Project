@@ -117,8 +117,7 @@ reef_clean <-
 
 We save the the the reef_clean dataset:
 
-```{r} write_csv(reef_clean, "data/_raw/reef_clean.csv")}
-```
+`{r} write_csv(reef_clean, "data/_raw/reef_clean.csv")}`
 
 ## Data Analysis
 
