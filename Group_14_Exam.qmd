@@ -107,18 +107,17 @@ reef_combined_tidy |>
   count(Ocean)
 ```
 
-We save the the the reef_clean dataset:
-
-```{r}
-write_csv(reef_clean, "data/_raw/reef_clean.csv")
-```
-
 We want to remove all the observations where Ocean has NA values and we can see that 57 observations has NA values. For this we can use drop_na to remove them from the dataset.
 
 ```{r}
 reef_clean <-
   reef_combined_tidy |>
   drop_na(Ocean)
+```
+
+We save the the the reef_clean dataset:
+
+```{r} write_csv(reef_clean, "data/_raw/reef_clean.csv")}
 ```
 
 ## Data Analysis
