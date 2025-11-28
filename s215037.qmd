@@ -86,8 +86,32 @@ View(reef_combined_tidy)
 write_csv(reef_combined_tidy, "reef_data_combined_tidy.csv")
 ```
 
-##### Plots
+```{r}
+reef_clean <-
+  reef_combined_tidy |>
+  drop_na(Ocean)
+```
 
-Plot relating to SST and Coral bleaching
+## Data Analysis
 
-## 
+```{r}
+reef_clean <- reef_clean |>
+  mutate(Temperature_Celsius = Temperature_Kelvin - 273.15)
+```
+
+```{r}
+library("ggridges")
+ggplot(data = reef_clean,
+             mapping = aes(x = Temperature_Celsius,
+                           y = Ocean,
+                           fill = Ocean)) +
+  geom_density_ridges(alpha = 0.5) +
+  scale_fill_viridis_d(option = "plasma") +
+  labs(x = "Temperature_Celsius",
+       y = "Ocean",
+       title = "Title",
+       caption = "x") +
+  theme_minimal(base_family = "Avenir",
+                base_size = 12) +
+  theme(legend.position = "bottom")
+```
