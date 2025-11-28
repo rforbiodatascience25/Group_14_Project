@@ -281,44 +281,34 @@ reef_clean |>
 
 The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations \[1\].
 
-Lastly we investigate the average bleaching over the years for the Pacific Ocean, trying to replicate figure 3.
+Lastly we investigate the average bleaching over the years for the Pacific Ocean.
 
 ```{r}
 data_pacific_yearly <- reef_clean |> 
-  filter(Ocean == "Pacific") |>            # keep only Pacific Ocean
-  group_by(Year) |>                      # group by Year
+  filter(Ocean == "Pacific") |>           
+  group_by(Year) |>                      
   summarise(mean_bleaching = mean(Average_bleaching, na.rm = TRUE))
 ```
 
 ```{r}
 ggplot(data_pacific_yearly,
        aes(x = Year, y = mean_bleaching)) +
-  
-  # Bars
-  geom_col(fill = "steelblue", alpha = 0.7, width = 0.7) +
-  
-  # Regression line (now aligned!)
-  geom_smooth(method = "lm",
+       geom_col(fill = "#0D0887", alpha = 0.5, width = 0.7) +
+       geom_smooth(method = "lm",
               se = FALSE,
               color = "red",
               linewidth = 1.3) +
-  
-  # Limit y-axis to 0–25%
-  scale_y_continuous(limits = c(0, 7)) +
-  
-  # Make x-axis show whole years nicely
-  scale_x_continuous(breaks = data_pacific_yearly$Year) +
-  
-  labs(
-    x = "Year",
-    y = "Mean % Bleaching",
-    title = "Mean Coral Bleaching per Year (Pacific Ocean)"
-  ) +
-  
-  theme_minimal(base_size = 14) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
-  )
+       scale_y_continuous(limits = c(0, 7)) +
+       scale_x_continuous(breaks = data_pacific_yearly$Year) +
+       labs(
+        x = "Year",
+        y = "Mean % Bleaching",
+        title = "Mean Coral Bleaching per Year (Pacific Ocean)"
+        ) +
+        theme_minimal(base_size = 12) +
+        theme(
+        axis.text.x = element_text(angle = 45, hjust = 1)
+     )
 ```
 
 In the pacific ocean, the average bleaching has increased over the years...
