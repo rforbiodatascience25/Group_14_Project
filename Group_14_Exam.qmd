@@ -17,11 +17,11 @@ editor: visual
 
 ## Background
 
-Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. 2019 called "*A global analysis of coral bleaching over the past two decades*," published in Nature, addresses how bleaching patterns have varied globally over recent decades.
+Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. 2019 called "*A global analysis of coral bleaching over the past two decades*," published in Nature, addresses how bleaching patterns have varied globally over recent decades. This is used as the only reference throughout the report \[1\].
 
 The consequences of coral bleaching affect the climate in terms of ecosystem damage due to loss of species and thereby biodiversity, but it also has major social and economic consequences for people who depend on reefs for food and tourism. The species loss can also mean indirect consequences in research e.g., loss of molecules that could have been discovered and used pharma industry or elsewhere.
 
-Using field observations collected from 3,351 reef sites across 81 countries between 1998 and 2017. The authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns \[1\].
+Using field observations collected from 3,351 reef sites across 81 countries between 1998 and 2017. The authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns.
 
 In this project we perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below and furthermore end with a conclusion.
 
@@ -39,13 +39,13 @@ During the project, we have followed the style of the "Data Science Cycle" as se
 
 ## Load Libraries
 
+We start by loading the relevant libraries.
+
 ```{r}
 #| message: false
 library("tidyverse")
 library("ggridges")
 ```
-
-We start of with writing the relevant libraries.
 
 ## Load Data
 
@@ -60,10 +60,11 @@ data2 <- read_csv(file="data/_raw/reef_data_dataset2.csv")
 
 ## Data Wrangling
 
-Starting out with the data wrangling we want to first combine the two datasets using the join function and combining them by their common column.
+Starting out with the data wrangling, we want to first combine the two datasets using the join function and combining them by their common column.
 
 ```{r}
 #| message: false
+#| warning: false
 reef_combined_untidy <- data1 |>
   left_join(data2, by = "ReefID_Name")
 
@@ -80,7 +81,6 @@ reef_combined_tidy <- reef_combined_untidy |>
     sep  = " \\| "
   ) |>
   relocate(Reef.ID, Reef.Name, .before = 1)
-
 
 write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
 ```
@@ -102,6 +102,8 @@ reef_clean <-
 
 ## Data Analysis
 
+Now the dataset is tidy, and we can begin analysis.
+
 We want to check how many observations we have for each year.
 
 ```{r}
@@ -109,7 +111,7 @@ reef_clean |>
   count(Year)
 ```
 
-We see that three years (1998, 2000 and 2001) does not contain many observations so these we want to filter out.
+We see that three years (1998, 2000 and 2001) do not contain many observations. We filter them out.
 
 ```{r}
 reef_clean <- reef_clean |>
@@ -118,7 +120,7 @@ reef_clean <- reef_clean |>
          Year != 2001)
 ```
 
-We make a plot based on the different seas to see if any oceans stands out.
+We make a plot based on the different oceans to see if any ocean stands out.
 
 ```{r}
 reef_clean |>
@@ -138,54 +140,60 @@ reef_clean |>
   )
 ```
 
-From the above, we see that the East Pacific only has few data points. We count them:
+From the above, we see that the East Pacific has few data points. We count them:
 
 ```{r}
 reef_clean |> 
   count(Ocean)
 ```
 
-We conclude that the East pacific has too few data points for further analysis when comparing to the other seas. Hence, we filter it out.
+We conclude that the East Pacific has too few data points for further analysis when comparing to the other oceans. Hence, we filter it out.
 
 ```{r}
 reef_clean <- reef_clean |>
   filter(Ocean != "East Pacific")
 ```
 
-We want to add another column with the temperatures in degrees Celsius using mutate.
+We want to add another column with the temperatures in degrees Celsius using the mutate function. This is for the following density plot.
 
 ```{r}
 reef_clean <- reef_clean |>
   mutate(Temperature_Celsius = Temperature_Kelvin - 273.15)
 ```
 
-We look at the temperatures in the different oceans too get insight into the dataset:
+We look at the temperatures in the different oceans to get insights into the dataset:
 
 ```{r}
+#| warning: false
 ggplot(data = reef_clean,
              mapping = aes(x = Temperature_Celsius,
                            y = Ocean,
                            fill = Ocean)) +
   geom_density_ridges(alpha = 0.5) +
   scale_fill_viridis_d(option = "plasma") +
-  labs(x = "Temperature_Celsius",
+  labs(x = "Temperature in Celsius",
        y = "Ocean",
-       title = "Title",
+       title = "Temperatures measured in the different oceans",
        caption = "x") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")
 ```
 
-The reason for the variations in temperature is that the samples are taken in different depths, sites and timepoints \[1\].
+The reason for the variations in temperature is that the samples are taken at different sites and timepoints.
 
 We now investigate the temperature development over time.
 
 ```{r}
+#| warning: false
 ggplot(data = reef_clean,
        mapping = aes(x = Year,
                      y = Temperature_Celsius)) +
   geom_point(color= "#0D0887", alpha = (0.5)) +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "red",
+              linewidth = 1.0) +
   labs(x = "Year", y = "Temperature_Celsius", title = "Temperature development over the years", fill="Ocean", color="Ocean") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
@@ -198,11 +206,12 @@ In the Red Sea and the Arabian Gulf, the temperature has decreased in the includ
 We here investigate the latitude and temperature connection.
 
 ```{r}
+#| warning: false
 ggplot(data = reef_clean,
        mapping = aes(x = Latitude.Degrees,
                      y = Temperature_Celsius)) +
   geom_point(color= "#0D0887", alpha = (0.5)) +
-  labs(x = "Latidtude.Degrees", y = "Temperature_Celsius", title = "T10 Scatterplot", fill = "Ocean", color = "Ocean") +
+  labs(x = "Latidtude in Degrees", y = "Temperature in Celsius", title = "Temperature at different latitudes", fill = "Ocean", color = "Ocean") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")+
@@ -211,14 +220,15 @@ ggplot(data = reef_clean,
 
 The possitive latitudes are north from equator and the negative are south. The data points from the Pacific, Atlantic, and Indian oceans cover both equator, north and south, with the pacific ocean having a more even spread of data points covering the latitude range.
 
-We note that there is a great variation in the measured temperatures at the same latitudes. We investigate the depths of the sampling affect on the temperature:
+We note that there is a great variation in the measured temperatures at the same latitudes. We investigate the depths of the sampling affect on the temperature.
 
 ```{r}
+#| warning: false
 ggplot(data = reef_clean,
        mapping = aes(x = Temperature_Celsius,
                      y = Depth)) +
   geom_point(color= "#0D0887", alpha = (0.5)) +
-  labs(x = "Temperature Celsius", y = "Depth [m]", title = "Temperatures based on depth of the sampling", fill = "Ocean", color = "Ocean") +
+  labs(x = "Temperature in Celsius", y = "Depth [m]", title = "Depth effect on temperature", fill = "Ocean", color = "Ocean") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")+
@@ -226,7 +236,7 @@ ggplot(data = reef_clean,
 
 ```
 
-There seems to be no clear relationship between the temperature and the depth of the measurement. We try and see this with numbers. We make a variable called depth_group in which the observations get allocated to:
+There seems to be no clear relationship between the temperature and the depth of the measurement. We try and see this with numbers. We make a variable called depth_group in which the observations get allocated to.
 
 ```{r}
 reef_clean <- reef_clean |>
@@ -238,7 +248,7 @@ reef_clean <- reef_clean |>
   )
 ```
 
-Here we see the results:
+Here we see the results.
 
 ```{r}
 reef_clean |>
@@ -250,13 +260,13 @@ reef_clean |>
   )
 ```
 
-The depths will not be taken into further account and doesn't seem to influence the temperature in the seas.
+The depths will not be taken into further account and do not seem to influence the temperature in the seas.
 
 #### Zooming in on the Pacific Ocean
 
 Due to the Pacific Ocean having a lot of data points distributed along the latitudes, we go further with the bleaching analysis in this ocean.
 
-We combine ggplot in a pipeline to only see Pacific Ocean data with latitudes and average bleaching.
+We combine ggplot in a pipeline to only see the Pacific Ocean data with latitudes and average bleaching.
 
 ```{r}
 reef_clean |> 
@@ -271,9 +281,9 @@ reef_clean |>
   theme(legend.position = "bottom")
 ```
 
-The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations \[1\].
+The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations.
 
-Lastly we investigate the average bleaching over the years for the Pacific Ocean. To do this, we make a new dataset containing the year and the average bleaching measured for that year.
+Lastly, we investigate the average bleaching over the years for the Pacific Ocean. To do this, we make a new dataset containing the year and the average bleaching measured for that year.
 
 ```{r}
 data_pacific_yearly <- reef_clean |> 
@@ -294,10 +304,7 @@ ggplot(data_pacific_yearly,
               linewidth = 1.3) +
        scale_y_continuous(limits = c(0, 7)) +
        scale_x_continuous(breaks = data_pacific_yearly$Year) +
-       labs(
-        x = "Year",
-        y = "Mean % Bleaching",
-        title = "Mean Coral Bleaching per Year (Pacific Ocean)"
+       labs(x = "Year", y = "Mean % Bleaching", title = "Mean Coral Bleaching per Year in the Pacific Ocean"
         ) +
         theme_minimal(base_size = 12) +
         theme(
