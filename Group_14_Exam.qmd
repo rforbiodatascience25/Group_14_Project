@@ -134,14 +134,11 @@ reef_clean <- reef_clean |>
 
 We make a plot based on the different seas to see if any datapoints stands out.
 
-(LINEAR MODEL?)
-
 ```{r}
 ggplot(data = reef_clean,
        mapping = aes(x = Year,
                      y = Average_bleaching)) +
   geom_point(alpha = (2)) +
-  geom_smooth(method = "lm", se = TRUE) +
   labs(x="Year", y="Average_bleaching", title="T10 Scatterplot", fill="Ocean", color="Ocean") +
   facet_wrap(~ Ocean)
 ```
@@ -169,14 +166,11 @@ reef_clean <- reef_clean |>
 
 We now investigate the temperature development over time.
 
-(IGEN LINEAR MODEL??)
-
 ```{r}
 ggplot(data = reef_clean,
        mapping = aes(x = Year,
                      y = Temperature_Celsius)) +
   geom_point(alpha = (2)) +
-  geom_smooth(method = "lm", se = TRUE) +
   labs(x = "Year", y = "Temperature_Celsius", title = "T10 Scatterplot", fill="Ocean", color="Ocean") +
   facet_wrap(~ Ocean)
 ```
