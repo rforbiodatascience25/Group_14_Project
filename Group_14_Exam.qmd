@@ -281,7 +281,7 @@ reef_clean |>
 
 The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations \[1\].
 
-Lastly we investigate the average bleaching over the years for the Pacific Ocean.
+Lastly we investigate the average bleaching over the years for the Pacific Ocean. To do this, we make a new dataset containing the year and the average bleaching measured for that year.
 
 ```{r}
 data_pacific_yearly <- reef_clean |> 
@@ -289,6 +289,8 @@ data_pacific_yearly <- reef_clean |>
   group_by(Year) |>                      
   summarise(mean_bleaching = mean(Average_bleaching, na.rm = TRUE))
 ```
+
+We plot the data together with a regression to investigate if coral bleaching has become worse over the years in the Pacific.
 
 ```{r}
 ggplot(data_pacific_yearly,
@@ -311,11 +313,19 @@ ggplot(data_pacific_yearly,
      )
 ```
 
-In the pacific ocean, the average bleaching has increased over the years...
+We make a model to extract some information about the linear fit:
+
+```{r}
+model <- lm(mean_bleaching ~ Year, data = data_pacific_yearly)
+summary(model)
+
+```
+
+We see that the adjusted R-squared value is 0.5817, which is not high enough to conclude anything with certainty. However, the results can still be used to see a tendency.
 
 ## Conclusion
 
-Coral bleaching is a global issue and requires samples from around the world, resulting in enormous data sets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool.
+Coral bleaching is a global issue and requires samples from around the world, resulting in enormous datasets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool. We show some general information about the data, and can conclude that there is a tendency that coral bleaching is increasing in the Pacific. Similar analysis could be made on the other Oceans but there should be an attention to if the ocean has enough data points.
 
 ## References
 
