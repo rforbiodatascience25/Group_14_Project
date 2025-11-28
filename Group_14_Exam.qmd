@@ -108,10 +108,6 @@ reef_clean <-
   drop_na(Ocean)
 ```
 
-We save the the the reef_clean dataset:
-
-`{r} write_csv(reef_clean, "data/_raw/reef_clean.csv")}`
-
 ## Data Analysis
 
 We want to check how many observations we have for each year.
