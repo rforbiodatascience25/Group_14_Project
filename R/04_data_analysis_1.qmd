@@ -3,6 +3,7 @@ title: "04_data_analysis_1"
 format: html
 editor: visual
 self-contained: true
+output-dir: ../results
 ---
 
 ## Load Libraries
