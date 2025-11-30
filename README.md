@@ -12,3 +12,5 @@
 *All group members contributed equally.*
 
 # Data Retriveal
+
+Description of the data used is stated in "Data Description" in the 00_all.qmd document.
