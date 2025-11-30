@@ -4,6 +4,8 @@ format: html
 editor: visual
 ---
 
+hi
+
 *This exam project has been conducted by group 14 which includes the students:*
 
 | Name                      | Student number |

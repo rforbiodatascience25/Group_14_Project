@@ -4,23 +4,46 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## Data Wrangling
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Starting out with the data wrangling, we want to first combine the two datasets using the join function and combining them by their common column.
 
 ```{r}
-1 + 1
+#| message: false
+#| warning: false
+reef_combined_untidy <- data1 |>
+  left_join(data2, by = "ReefID_Name")
+
+write_csv(reef_combined_untidy, "../data/_raw/reef_data_combined_untidy.csv")
 ```
 
-You can add options to executable code like this
+Now we want to tidy the dataset, and turn ReefID_Name into two separate variables. For this we use the seperate function and split them by "\|".
 
 ```{r}
-#| echo: false
-2 * 2
+reef_combined_tidy <- reef_combined_untidy |>
+  separate(
+    col  = "ReefID_Name",
+    into = c("Reef.ID", "Reef.Name"),
+    sep  = " \\| "
+  ) |>
+  relocate(Reef.ID, Reef.Name, .before = 1)
+
+write_csv(reef_combined_tidy, "../data/_raw/reef_data_combined_tidy.csv")
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+We want to check if the variable Ocean has any NA values. For this we can use the function count.
+
+```{r}
+reef_combined_tidy |>
+  count(Ocean)
+```
+
+We want to remove all the observations where Ocean has NA values and we can see that 57 observations has NA values. For this we can use drop_na to remove them from the dataset.
+
+```{r}
+reef_clean <-
+  reef_combined_tidy |>
+  drop_na(Ocean)
+```
+
+## 
