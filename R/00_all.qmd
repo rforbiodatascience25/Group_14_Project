@@ -139,6 +139,8 @@ reef_clean |>
     legend.position = "bottom",
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+
+ggsave("../results/01_plot.png", width = 8, height = 6, dpi = 300)
 ```
 
 From the above, we see that the East Pacific has few data points. We count them:
