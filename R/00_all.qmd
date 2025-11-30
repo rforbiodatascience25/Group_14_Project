@@ -1,8 +1,6 @@
 ---
-title: "Group 14 Exam"
-format:
-  html:
-    self-contained: true
+title: "Group 14 exam"
+format: html
 editor: visual
 ---
 
