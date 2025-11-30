@@ -4,6 +4,26 @@ format: html
 editor: visual
 ---
 
+## Load Libraries
+
+We start by loading the relevant libraries.
+
+```{r}
+#| message: false
+library("tidyverse")
+library("ggridges")
+```
+
+## Load Data
+
+The two different datasets are loaded into the document and saved as data1 and data2. When viewing the two files, we see that they both contain ReefID_Name as the first column. This column is untidy since we have two different informations in one cell.
+
+```{r}
+#| message: false
+data1 <- read_csv("../data/_raw/reef_data_dataset1.csv")
+data2 <- read_csv("../data/_raw/reef_data_dataset2.csv")
+```
+
 ## Data Wrangling
 
 Starting out with the data wrangling, we want to first combine the two datasets using the join function and combining them by their common column.
