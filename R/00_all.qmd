@@ -2,8 +2,7 @@
 title: "Group 14 exam"
 format: html
 editor: visual
-embed-resources: true
-self-contained: false
+self-contained: true
 ---
 
 *This exam project has been conducted by group 14 which includes the students:*

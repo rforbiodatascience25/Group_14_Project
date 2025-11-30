@@ -2,6 +2,7 @@
 title: "03_augment"
 format: html
 editor: visual
+self-contained: true
 ---
 
 ## Load Libraries
