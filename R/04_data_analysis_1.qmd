@@ -1,43 +1,8 @@
 ---
-title: "Group_14_Exam"
+title: "03_augment"
 format: html
 editor: visual
 ---
-
-*This exam project has been conducted by group 14 which includes the students:*
-
-| Name                      | Student number |
-|---------------------------|----------------|
-| Caroline Sofie Hermannsen | s215016        |
-| Helene Nielsen            | s215037        |
-| Kathrine Böech Kaas       | s215052        |
-| Nadia Hansen              | s215055        |
-
-*All group members contributed equally.*
-
-## Background
-
-Coral reefs around the world are experiencing increased stress due to rising sea-surface temperatures and other climate-driven changes. Coral bleaching is the loss of symbiotic algae from coral tissues, which is often precipitated by thermal stress. It is one of the most visible and damaging consequences of these shifts. The study by Sully et al. 2019 called "*A global analysis of coral bleaching over the past two decades*," published in Nature, addresses how bleaching patterns have varied globally over recent decades. This is used as the only reference throughout the report \[1\].
-
-The consequences of coral bleaching affect the climate in terms of ecosystem damage due to loss of species and thereby biodiversity, but it also has major social and economic consequences for people who depend on reefs for food and tourism. The species loss can also mean indirect consequences in research e.g., loss of molecules that could have been discovered and used pharma industry or elsewhere.
-
-Using field observations collected from 3,351 reef sites across 81 countries between 1998 and 2017. The authors combined these bleaching records with environmental and temperature metrics to identify spatial and temporal patterns.
-
-In this project we perform Data Wrangling and Data Analysis on the datasets from the study. The datasets used are described in Data Description below and furthermore end with a conclusion.
-
-![Coral bleaching in the Pacific Ocean. Created with Sora AI.](../results/Coral_reef.png)
-
-## Data Description
-
-The data can be accessed in the raw –\> data file in the Github project "Group_14_Project". The original data has been downloaded from <https://github.com/InstituteForGlobalEcology/Coral-bleaching-a-global-analysis-of-the-past-two-decades>. The specific file: "Reef_Check_with_cortad_variables_with_annual_rate_of_SST_change.csv" has been the data file providing the information used for all of the findings in the project. Please note that this file was already fairly tidy, and for this reason it has been untidied and split into two seperated datasets called "reef_data_dataset1.csv" and "reef_data_dataset2.csv". This provided a better opportunity for the group to show an understanding of more functions.
-
-## Aim
-
-The aim of this project was to tidy and combine two datasets, and by doing this, be able to explore coral bleaching issues around the world. This was a collaborative project developed using Git and the workflow is also a part of the product.
-
-During the project, we have followed the style of the "Data Science Cycle" as seen below. The work has primarily been focused on tidying as well as visualisation.
-
-![Data Science Cycle Diagram.](../results/Data_Science_cycle.png)
 
 ## Load Libraries
 
@@ -162,7 +127,7 @@ reef_clean <- reef_clean |>
   mutate(Temperature_Celsius = Temperature_Kelvin - 273.15)
 ```
 
-We look at the temperatures in the different oceans to get insights into the dataset:
+We look at the temperatures in the different oceans to get insights into the dataset.
 
 ```{r}
 #| warning: false
@@ -261,70 +226,3 @@ reef_clean |>
 ```
 
 The depths will not be taken into further account and do not seem to influence the temperature in the seas.
-
-#### Zooming in on the Pacific Ocean
-
-Due to the Pacific Ocean having a lot of data points distributed along the latitudes, we go further with the bleaching analysis in this ocean.
-
-We combine ggplot in a pipeline to only see the Pacific Ocean data with latitudes and average bleaching.
-
-```{r}
-reef_clean |> 
-  select(Ocean = Pacific) |> 
-  ggplot(data = reef_clean,
-       mapping = aes(x = Latitude.Degrees,
-                     y = Average_bleaching)) +
-  geom_point(color= "#0D0887", alpha = (0.5)) +
-  labs(x = "Latitude in degrees", y = "Average bleaching", title = "Average bleaching in the Pacific based on latitude", fill = "Ocean", color = "Ocean")+
-  theme_minimal(base_family = "Avenir",
-                base_size = 12) +
-  theme(legend.position = "bottom")
-```
-
-The average bleaching seems higher for latitudes from -5 and further south and +5 and further north. Also, it seems like there is more average bleaching at higher latitudes. A hypothesis can be that it is due to higher species diversity at lower latitudes, resulting in a higher robustness against temperature variations.
-
-Lastly, we investigate the average bleaching over the years for the Pacific Ocean. To do this, we make a new dataset containing the year and the average bleaching measured for that year.
-
-```{r}
-data_pacific_yearly <- reef_clean |> 
-  filter(Ocean == "Pacific") |>           
-  group_by(Year) |>                      
-  summarise(mean_bleaching = mean(Average_bleaching, na.rm = TRUE))
-```
-
-We plot the data together with a regression to investigate if coral bleaching has become worse over the years in the Pacific.
-
-```{r}
-data_pacific_yearly |>
-  ggplot(aes(x = Year, y = mean_bleaching)) +
-  geom_col(fill = "#0D0887", alpha = 0.5) +
-  geom_smooth(
-    method = "lm",
-    se = FALSE,
-    color = "red",
-    linewidth = 1.3
-  ) +
-  scale_x_continuous(breaks = data_pacific_yearly$Year) +
-  labs(title = "Mean Coral Bleaching per Year (Pacific Ocean)",
-    x = "Year", y = "Mean % Bleaching"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-We make a model to extract some information about the linear fit.
-
-```{r}
-model <- lm(mean_bleaching ~ Year, data = data_pacific_yearly)
-summary(model)
-```
-
-We see that the adjusted R-squared value is 0.5817, which is not high enough to conclude anything with certainty. However, the results can still be used to see a tendency.
-
-## Conclusion
-
-Coral bleaching is a global issue and requires samples from around the world, resulting in enormous datasets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool. We showed some general information about the data, and concluded that there is a tendency that coral bleaching is increasing in the Pacific. Similar analysis can be performed on other Oceans, but there should still be an attention to, if the ocean has enough data points.
-
-## References
-
-\[1\] Sully, S., Burkepile, D.E., Donovan, M.K. *et al.* A global analysis of coral bleaching over the past two decades. *Nat Commun* **10**, 1264 (2019). https://doi.org/10.1038/s41467-019-09238-2
