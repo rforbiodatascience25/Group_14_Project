@@ -55,8 +55,9 @@ The two different datasets are loaded into the document and saved as data1 and d
 
 ```{r}
 #| message: false
-data1 <- read_csv("../data/_raw/reef_data_dataset1.csv")
-data2 <- read_csv("../data/_raw/reef_data_dataset2.csv")
+data1 <- read_csv(file="data/_raw/reef_data_dataset1.csv")
+data2 <- read_csv(file="data/_raw/reef_data_dataset2.csv")
+
 ```
 
 ## Data Wrangling
@@ -69,7 +70,7 @@ Starting out with the data wrangling, we want to first combine the two datasets 
 reef_combined_untidy <- data1 |>
   left_join(data2, by = "ReefID_Name")
 
-write_csv(reef_combined_untidy, "../data/_raw/reef_data_combined_untidy.csv")
+write_csv(reef_combined_untidy, "data/_raw/reef_data_combined_untidy.csv")
 ```
 
 Now we want to tidy the dataset, and turn ReefID_Name into two separate variables. For this we use the seperate function and split them by "\|".
@@ -83,7 +84,7 @@ reef_combined_tidy <- reef_combined_untidy |>
   ) |>
   relocate(Reef.ID, Reef.Name, .before = 1)
 
-write_csv(reef_combined_tidy, "../data/_raw/reef_data_combined_tidy.csv")
+write_csv(reef_combined_tidy, "data/_raw/reef_data_combined_tidy.csv")
 ```
 
 We want to check if the variable Ocean has any NA values. For this we can use the function count.
@@ -296,35 +297,36 @@ data_pacific_yearly <- reef_clean |>
 We plot the data together with a regression to investigate if coral bleaching has become worse over the years in the Pacific.
 
 ```{r}
-data_pacific_yearly |>
-  ggplot(aes(x = Year, y = mean_bleaching)) +
-  geom_col(fill = "#0D0887", alpha = 0.5) +
-  geom_smooth(
-    method = "lm",
-    se = FALSE,
-    color = "red",
-    linewidth = 1.3
-  ) +
-  scale_x_continuous(breaks = data_pacific_yearly$Year) +
-  labs(title = "Mean Coral Bleaching per Year (Pacific Ocean)",
-    x = "Year", y = "Mean % Bleaching"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggplot(data_pacific_yearly,
+       aes(x = Year, y = mean_bleaching)) +
+       geom_col(fill = "#0D0887", alpha = 0.5, width = 0.7) +
+       geom_smooth(method = "lm",
+              se = FALSE,
+              color = "red",
+              linewidth = 1.3) +
+       scale_y_continuous(limits = c(0, 7)) +
+       scale_x_continuous(breaks = data_pacific_yearly$Year) +
+       labs(x = "Year", y = "Mean % Bleaching", title = "Mean Coral Bleaching per Year in the Pacific Ocean"
+        ) +
+        theme_minimal(base_size = 12) +
+        theme(
+        axis.text.x = element_text(angle = 45, hjust = 1)
+     )
 ```
 
-We make a model to extract some information about the linear fit.
+We make a linear model to extract some information about the linear fit:
 
 ```{r}
 model <- lm(mean_bleaching ~ Year, data = data_pacific_yearly)
 summary(model)
+
 ```
 
 We see that the adjusted R-squared value is 0.5817, which is not high enough to conclude anything with certainty. However, the results can still be used to see a tendency.
 
 ## Conclusion
 
-Coral bleaching is a global issue and requires samples from around the world, resulting in enormous datasets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool. We showed some general information about the data, and concluded that there is a tendency that coral bleaching is increasing in the Pacific. Similar analysis can be performed on other Oceans, but there should still be an attention to, if the ocean has enough data points.
+Coral bleaching is a global issue and requires samples from around the world, resulting in enormous datasets. To evaluate some of the findings from these many data points from 2002-2017 R has been a good tool. We show some general information about the data, and can conclude that there is a tendency that coral bleaching is increasing in the Pacific. Similar analysis could be made on the other Oceans but there should be an attention to if the ocean has enough data points.
 
 ## References
 

@@ -4,22 +4,23 @@ format: html
 editor: visual
 ---
 
-## Load Libraries
+## Quarto
 
-We start by loading the relevant libraries.
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-```{r}
-#| message: false
-library("tidyverse")
-library("ggridges")
-```
+## Running Code
 
-## Load Data
-
-The two different datasets are loaded into the document and saved as data1 and data2. When viewing the two files, we see that they both contain ReefID_Name as the first column. This column is untidy since we have two different informations in one cell.
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
-#| message: false
-data1 <- read_csv("../data/_raw/reef_data_dataset1.csv")
-data2 <- read_csv("../data/_raw/reef_data_dataset2.csv")
+1 + 1
 ```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
