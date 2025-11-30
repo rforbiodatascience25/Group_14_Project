@@ -261,6 +261,7 @@ We plot the data together with a regression to investigate if coral bleaching ha
 
 ```{r}
 #| message: false
+#| warning: false
 data_pacific_yearly |>
   ggplot(aes(x = Year, y = mean_bleaching)) +
   geom_col(fill = "#0D0887", alpha = 0.5) +
