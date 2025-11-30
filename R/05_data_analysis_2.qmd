@@ -260,6 +260,7 @@ data_pacific_yearly <- reef_clean |>
 We plot the data together with a regression to investigate if coral bleaching has become worse over the years in the Pacific.
 
 ```{r}
+#| message: false
 data_pacific_yearly |>
   ggplot(aes(x = Year, y = mean_bleaching)) +
   geom_col(fill = "#0D0887", alpha = 0.5) +
@@ -280,6 +281,7 @@ data_pacific_yearly |>
 We make a model to extract some information about the linear fit.
 
 ```{r}
+#| message: false
 model <- lm(mean_bleaching ~ Year, data = data_pacific_yearly)
 summary(model)
 ```
