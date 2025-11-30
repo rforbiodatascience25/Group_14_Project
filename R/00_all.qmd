@@ -101,10 +101,6 @@ reef_clean <-
   drop_na(Ocean)
 ```
 
-## Data Analysis
-
-Now the dataset is tidy, and we can begin analysis.
-
 We want to check how many observations we have for each year.
 
 ```{r}
@@ -120,6 +116,10 @@ reef_clean <- reef_clean |>
          Year != 2000,
          Year != 2001)
 ```
+
+## Data Analysis
+
+Now the dataset is tidy, and we can begin analysis.
 
 We make a plot based on the different oceans to see if any ocean stands out.
 
