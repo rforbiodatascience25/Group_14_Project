@@ -176,7 +176,7 @@ ggplot(data = reef_clean,
   scale_fill_viridis_d(option = "plasma") +
   labs(x = "Temperature in Celsius",
        y = "Ocean",
-       title = "Temperatures measured in the different oceans",
+       title = "Temperatures Measured in the Different Oceans",
        caption = "x") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
@@ -199,7 +199,7 @@ ggplot(data = reef_clean,
               se = FALSE,
               color = "red",
               linewidth = 1.0) +
-  labs(x = "Year", y = "Temperature_Celsius", title = "Temperature development over the years", fill="Ocean", color="Ocean") +
+  labs(x = "Year", y = "Temperature in Celsius", title = "Temperature Development over the Years", fill ="Ocean", color ="Ocean") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")+
@@ -218,7 +218,7 @@ ggplot(data = reef_clean,
        mapping = aes(x = Latitude.Degrees,
                      y = Temperature_Celsius)) +
   geom_point(color= "#0D0887", alpha = (0.5)) +
-  labs(x = "Latidtude in Degrees", y = "Temperature in Celsius", title = "Temperature at different latitudes", fill = "Ocean", color = "Ocean") +
+  labs(x = "Latidtude in Degrees", y = "Temperature in Celsius", title = "Temperature at Different Latitudes", fill = "Ocean", color = "Ocean") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")+
@@ -237,7 +237,7 @@ ggplot(data = reef_clean,
        mapping = aes(x = Temperature_Celsius,
                      y = Depth)) +
   geom_point(color= "#0D0887", alpha = (0.5)) +
-  labs(x = "Temperature in Celsius", y = "Depth [m]", title = "Depth effect on temperature", fill = "Ocean", color = "Ocean") +
+  labs(x = "Temperature in Celsius", y = "Depth [m]", title = "Depth Effect on Temperature", fill = "Ocean", color = "Ocean") +
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")+
@@ -285,7 +285,7 @@ reef_clean |>
        mapping = aes(x = Latitude.Degrees,
                      y = Average_bleaching)) +
   geom_point(color= "#0D0887", alpha = (0.5)) +
-  labs(x = "Latitude in degrees", y = "Average bleaching", title = "Average bleaching in the Pacific based on latitude", fill = "Ocean", color = "Ocean")+
+  labs(x = "Latitude in Degrees", y = "Average Bleaching", title = "Average Bleaching in the Pacific Based on Latitude", fill = "Ocean", color = "Ocean")+
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")
