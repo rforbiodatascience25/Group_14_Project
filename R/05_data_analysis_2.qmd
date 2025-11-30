@@ -2,6 +2,7 @@
 title: "05_data_analysis_2"
 format: html
 editor: visual
+self-contained: true
 ---
 
 ## Load Libraries
