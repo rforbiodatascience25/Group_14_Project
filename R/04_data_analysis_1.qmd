@@ -3,8 +3,6 @@ title: "04_data_analysis_1"
 format:
   html:
     self-contained: true
-project:
-  output-dir: "../results"
 editor: visual
 ---
 
