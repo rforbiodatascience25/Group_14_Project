@@ -67,4 +67,18 @@ reef_clean <-
   drop_na(Ocean)
 ```
 
-## 
+We want to check how many observations we have for each year.
+
+```{r}
+reef_clean |>
+  count(Year)
+```
+
+We see that three years (1998, 2000 and 2001) do not contain many observations. We filter them out.
+
+```{r}
+reef_clean <- reef_clean |>
+  filter(Year != 1998,
+         Year != 2000,
+         Year != 2001)
+```
