@@ -5,8 +5,8 @@ format:
   revealjs:
     theme: moon
     self-contained: true
-    fontsize: 30px 
-    slide-number: true    
+    slide-number: true      
+    fontsize: 30px         
 editor:
   markdown:
     wrap: 72
