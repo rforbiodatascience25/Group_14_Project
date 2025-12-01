@@ -17,7 +17,7 @@
 
 # Data Retriveal
 
-Description of the data used, and where to find it, is stated in "Data Description" in the 00_all.qmd document.
+Description of the data used and where to find it, is stated in "Data Description" in the 00_all.qmd document.
 
 # Description of Files
 
