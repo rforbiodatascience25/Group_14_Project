@@ -3,7 +3,7 @@ title: "Coral reefs increased stress "
 author: "Group 14"
 format:
   revealjs:
-    theme: blue-theme
+    theme: moon
     self-contained: true
 editor: 
   markdown: 
