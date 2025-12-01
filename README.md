@@ -13,7 +13,7 @@
 
 # Link to Presentation
 
-{Link}
+<https://raw.githack.com/rforbiodatascience25/group_14_project/main/doc/presentation.html>
 
 # Data Retriveal
 
