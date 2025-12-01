@@ -106,6 +106,8 @@ reef_clean |>
     legend.position = "bottom",
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+
+ggsave("../results/01_plot.png", width = 8, height = 6, dpi = 300)
 ```
 
 From the above, we see that the East Pacific has few data points. We count them:
@@ -146,6 +148,8 @@ ggplot(data = reef_clean,
   theme_minimal(base_family = "Avenir",
                 base_size = 12) +
   theme(legend.position = "bottom")
+
+ggsave("../results/02_plot.png", width = 8, height = 6, dpi = 300)
 ```
 
 The reason for the variations in temperature is that the samples are taken at different sites and timepoints.
@@ -167,6 +171,8 @@ ggplot(data = reef_clean,
                 base_size = 12) +
   theme(legend.position = "bottom")+
   facet_wrap(~ Ocean)
+
+ggsave("../results/03_plot.png", width = 8, height = 6, dpi = 300)
 ```
 
 In the Red Sea and the Arabian Gulf, the temperature has decreased in the included time period, whereas in the temperature in the Pacific, Atlantic and Indian Sea has increased. It is important to highlight that this only reflects the temperature where the samples were taken and not nessercerily the overall climate tendency.
@@ -184,6 +190,8 @@ ggplot(data = reef_clean,
                 base_size = 12) +
   theme(legend.position = "bottom")+
   facet_wrap(~ Ocean)
+
+ggsave("../results/04_plot.png", width = 8, height = 6, dpi = 300)
 ```
 
 The possitive latitudes are north from equator and the negative are south. The data points from the Pacific, Atlantic, and Indian oceans cover both equator, north and south, with the pacific ocean having a more even spread of data points covering the latitude range.
@@ -201,6 +209,8 @@ ggplot(data = reef_clean,
                 base_size = 12) +
   theme(legend.position = "bottom")+
   facet_wrap(~ Ocean)
+
+ggsave("../results/05_plot.png", width = 8, height = 6, dpi = 300)
 ```
 
 There seems to be no clear relationship between the temperature and the depth of the measurement. We try and see this with numbers. We make a variable called depth_group in which the observations get allocated to.
