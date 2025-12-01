@@ -3161,9 +3161,42 @@ vertical-align: -.125em;
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  reef_combined_tidy <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(Ocean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
+<p>We want to check how many observations we have for each year.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reef_clean <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 2
+    Year     n
+   &lt;dbl&gt; &lt;int&gt;
+ 1  1998    10
+ 2  2000    11
+ 3  2001    34
+ 4  2002   450
+ 5  2003  2597
+ 6  2004  2648
+ 7  2005  2983
+ 8  2006  3766
+ 9  2007  3866
+10  2008  4061
+11  2009  4098
+12  2010  3875
+13  2011  4425
+14  2012  3720
+15  2013  3353
+16  2014  3687
+17  2015  3751
+18  2016  3039
+19  2017  1230</code></pre>
+</div>
+</div>
+<p>We see that three years (1998, 2000 and 2001) do not contain many observations. We filter them out.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reef_clean <span class="ot">&lt;-</span> reef_clean <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">!=</span> <span class="dv">1998</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         Year <span class="sc">!=</span> <span class="dv">2000</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         Year <span class="sc">!=</span> <span class="dv">2001</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 
 </main>
