@@ -1,10 +1,11 @@
 ---
 title: "Coral reefs increased stress"
-author: "Group 14"
+author: "Group 14 - s215016, s215037, s215052 & s215055"
 format:
   revealjs:
     theme: moon
     self-contained: true
+    fontsize: 30px    
 editor:
   markdown:
     wrap: 72
@@ -70,17 +71,18 @@ coral bleaching over the past two decades. Nat Commun **10**, 1264
 ## Methods: Data Wrangling
 
 -   Join two datasets
-    -   By using the join function, left_join, combining them by their
-        common column
--   Tidy dataset 
+    -   By using **join**, left_join, combining them by their common
+        variable
+-   Tidy dataset
     -   Split the variables ReefID_Name into [Reef.ID](http://reef.id)
-        and [Reef.Name](http://reef.name) by using “\\ \|” function.
+        and [Reef.Name](http://reef.name) by using the **seperate**
+        function.
 -   N/A discarded
     -   Removing the data points with ocean value = N/A, by using the
-        drop_na function
+        **drop_na** function
 -   Discarding 1998, 2000 and 2001 data points
-    -   Removing due to few data points for the mentioned year by using
-        the filter function into a new dataset.
+    -   Removing due to few data points by using the **filter**
+        function.
 
 ```{=html}
 <img src="coral_cropped.png" style="
@@ -97,49 +99,16 @@ coral bleaching over the past two decades. Nat Commun **10**, 1264
 
 ## Data Analysis
 
--   Analyze the amount of data points for each ocean
+-   Analyze the number of data points for each ocean
 
-    -   Using the count function to count the data points for each ocean
+    -   Using **count** —\> East Pacific only had 69 data points 
 
-    -   East Pacific only had 69 data points 
-
--   Discard the East Pacific data 
-
-    -   Removes the data using the filter function to filter them out,
-        creating an updated dataset
+    -   Using **filter** —\> Discard the East Pacific data 
 
 -   Adding a new Celsius column to the dataset
 
-    -   Calculating the temperature from Kelvin to Celsius and creating
-        it as a new column by using the mutate function
-
--   Further analysis will be evaluated as plots and graphs
-
-## Results & Discussion 1/5
-
-![](images/clipboard-74392507.png)
-
-## Results & Discussion 2/5
-
-![](images/clipboard-1222054224.png)
-
-## Results & Discussion 3/5
-
-![](images/clipboard-2200480825.png)
-
-![](images/clipboard-3165186936.png)
-
-## Results & Discussion 4/5
-
-![](images/clipboard-3164990728.png)
-
-## Results & Discussion 5/5
-
-![](images/clipboard-2740210764.png)
-
-## Conclusion
-
--   Add content here
+    -   Using **mutate** —\> Calculating the temperature from Kelvin to
+        Celsius
 
 ```{=html}
 <img src="coral_cropped.png" style="
@@ -153,3 +122,25 @@ coral bleaching over the past two decades. Nat Commun **10**, 1264
   z-index:-1;
   opacity:0.95;">
 ```
+
+## Results & Discussion 1/5
+
+![](images/clipboard-74392507.png)
+
+## Results & Discussion 2/5
+
+![](images/clipboard-1222054224.png)
+
+## Results & Discussion 3/5
+
+![](images/clipboard-2200480825.png){width="421"}
+
+![](images/clipboard-3165186936.png){width="421"}
+
+## Results & Discussion 4/5
+
+![](images/clipboard-3164990728.png)
+
+## Results & Discussion 5/5
+
+![](images/clipboard-2740210764.png)
