@@ -1,12 +1,12 @@
 ---
-title: "Coral reefs increased stress "
+title: "Coral reefs increased stress"
 author: "Group 14"
 format:
   revealjs:
     theme: moon
     self-contained: true
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
 ---
 
@@ -43,7 +43,16 @@ Sully, S., Burkepile, D.E., Donovan, M.K. et al. A global analysis of
 coral bleaching over the past two decades. Nat Commun **10**, 1264
 (2019). https://doi.org/10.1038/s41467-019-09238-2
 
--   
+-   Observations are based on samples from 3,351 sites in 81 countries
+    taken from 1998-2017
+
+-   The dataset we chose had
+
+    -   Obersvations: 9,215
+
+    -   Variables: 55
+
+-   We untidied it and split it into two separate datasets
 
 ```{=html}
 <img src="coral_cropped.png" style="
@@ -58,26 +67,20 @@ coral bleaching over the past two decades. Nat Commun **10**, 1264
   opacity:0.95;">
 ```
 
-## Methods
+## Methods: Data Wrangling
 
--   Add content here
-
-```{=html}
-<img src="coral_cropped.png" style="
-  position:absolute;
-  bottom:0;
-  left:50%;
-  height:30vh;                     
-  width:auto;                      
-  transform:translate(-50%, 50%) scaleX(2.12);
-  transform-origin: center bottom;
-  z-index:-1;
-  opacity:0.95;">
-```
-
-## Results
-
--   Add content here
+-   Join two datasets
+    -   By using the join function, left_join, combining them by their
+        common column
+-   Tidy dataset 
+    -   Split the variables ReefID_Name into [Reef.ID](http://reef.id)
+        and [Reef.Name](http://reef.name) by using “\\ \|” function.
+-   N/A discarded
+    -   Removing the data points with ocean value = N/A, by using the
+        drop_na function
+-   Discarding 1998, 2000 and 2001 data points
+    -   Removing due to few data points for the mentioned year by using
+        the filter function into a new dataset.
 
 ```{=html}
 <img src="coral_cropped.png" style="
@@ -92,22 +95,47 @@ coral bleaching over the past two decades. Nat Commun **10**, 1264
   opacity:0.95;">
 ```
 
-## Discussion
+## Data Analysis
 
--   Add content here
+-   Analyze the amount of data points for each ocean
 
-```{=html}
-<img src="coral_cropped.png" style="
-  position:absolute;
-  bottom:0;
-  left:50%;
-  height:30vh;                     
-  width:auto;                      
-  transform:translate(-50%, 50%) scaleX(2.12);
-  transform-origin: center bottom;
-  z-index:-1;
-  opacity:0.95;">
-```
+    -   Using the count function to count the data points for each ocean
+
+    -   East Pacific only had 69 data points 
+
+-   Discard the East Pacific data 
+
+    -   Removes the data using the filter function to filter them out,
+        creating an updated dataset
+
+-   Adding a new Celsius column to the dataset
+
+    -   Calculating the temperature from Kelvin to Celsius and creating
+        it as a new column by using the mutate function
+
+-   Further analysis will be evaluated as plots and graphs
+
+## Results & Discussion 1/5
+
+![](images/clipboard-74392507.png)
+
+## Results & Discussion 2/5
+
+![](images/clipboard-1222054224.png)
+
+## Results & Discussion 3/5
+
+![](images/clipboard-2200480825.png)
+
+![](images/clipboard-3165186936.png)
+
+## Results & Discussion 4/5
+
+![](images/clipboard-3164990728.png)
+
+## Results & Discussion 5/5
+
+![](images/clipboard-2740210764.png)
 
 ## Conclusion
 
